@@ -136,107 +136,127 @@
     }
     .nav-phone i { color: var(--orange); font-size: 16px; }
     /* ── STAR BUTTON ── */
-    @keyframes star-btn {
-      0%   { offset-distance: 0%; }
-      100% { offset-distance: 100%; }
-    }
-
     .btn {
       position: relative;
-      isolation: isolate;
-      overflow: hidden;
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      padding: 0 26px;
-      height: 44px;
-      border-radius: 999px;
-      font-size: 13px;
+      padding: 12px 28px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.02em;
+      border-radius: 6px;
+      border: 3px solid;
       cursor: pointer;
-      border: 2px solid transparent;
-      transition: transform 0.15s, filter 0.2s;
+      transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
       white-space: nowrap;
       text-decoration: none;
+      overflow: visible;
     }
-    .btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
-    .btn:active { transform: translateY(0); filter: brightness(0.95); }
+    .btn:active { transform: scale(0.95); }
 
-    /* Traveling glow — injected by JS as .btn-light */
-    .btn-light {
+    /* Flying star shapes — injected by JS */
+    .btn-star {
       position: absolute;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      offset-path: var(--star-path, none);
-      offset-distance: 0%;
-      animation: star-btn 3s linear infinite;
-      translate: -50% -50%;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* Star texture overlay — injected by JS as .btn-stars */
-    .btn-stars {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      border-radius: inherit;
       pointer-events: none;
       z-index: 2;
-      opacity: 0.18;
+      opacity: 0;
     }
-    .btn-stars svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .btn-star svg { width: 100%; height: auto; display: block; }
+    .btn:hover .btn-star { opacity: 1; }
 
-    /* Original button content wrapper — injected by JS as .btn-inner */
-    .btn-inner {
-      position: relative;
-      z-index: 3;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
+    /* Star positions: resting → hover */
+    .btn-star-1 { top: 20%; left: 20%; width: 25px;
+      transition: top 1000ms cubic-bezier(0.05,0.83,0.43,0.96), left 1000ms cubic-bezier(0.05,0.83,0.43,0.96), filter 1000ms, opacity 200ms; }
+    .btn-star-2 { top: 45%; left: 45%; width: 15px;
+      transition: top 1000ms cubic-bezier(0,0.4,0,1.01), left 1000ms cubic-bezier(0,0.4,0,1.01), filter 1000ms, opacity 200ms; }
+    .btn-star-3 { top: 40%; left: 40%; width: 5px;
+      transition: top 1000ms cubic-bezier(0,0.4,0,1.01), left 1000ms cubic-bezier(0,0.4,0,1.01), filter 1000ms, opacity 200ms; }
+    .btn-star-4 { top: 20%; left: 40%; width: 8px;
+      transition: top 800ms cubic-bezier(0,0.4,0,1.01), left 800ms cubic-bezier(0,0.4,0,1.01), filter 800ms, opacity 200ms; }
+    .btn-star-5 { top: 25%; left: 45%; width: 15px;
+      transition: top 600ms cubic-bezier(0,0.4,0,1.01), left 600ms cubic-bezier(0,0.4,0,1.01), filter 600ms, opacity 200ms; }
+    .btn-star-6 { top: 5%;  left: 50%; width: 5px;
+      transition: top 800ms ease-in-out, left 800ms ease-in-out, filter 800ms, opacity 200ms; }
+
+    .btn:hover .btn-star-1 { top: -80%; left: -30%; filter: drop-shadow(0 0 10px currentColor); }
+    .btn:hover .btn-star-2 { top: -25%; left:  10%; filter: drop-shadow(0 0 10px currentColor); }
+    .btn:hover .btn-star-3 { top:  55%; left:  25%; filter: drop-shadow(0 0 10px currentColor); }
+    .btn:hover .btn-star-4 { top:  30%; left:  80%; filter: drop-shadow(0 0 10px currentColor); }
+    .btn:hover .btn-star-5 { top:  25%; left: 115%; filter: drop-shadow(0 0 10px currentColor); }
+    .btn:hover .btn-star-6 { top:   5%; left:  60%; filter: drop-shadow(0 0 10px currentColor); }
 
     /* ── BUTTON VARIANTS ── */
     .btn-orange {
       background: var(--orange);
       color: #fff;
       border-color: var(--orange);
+      box-shadow: 0 0 0 rgba(204,34,34,0);
     }
-    .btn-orange:hover { background: var(--orange2); border-color: var(--orange2); }
-    .btn-orange .btn-light {
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.45) 0%, transparent 65%);
+    .btn-orange:hover {
+      background: transparent;
+      color: var(--orange);
+      box-shadow: 0 0 25px rgba(204,34,34,0.55);
     }
-    .btn-orange .btn-stars { color: #fff; }
+    .btn-orange .btn-star svg { fill: var(--orange); }
 
     .btn-navy {
       background: var(--navy);
       color: #fff;
       border-color: var(--navy);
+      box-shadow: 0 0 0 rgba(12,31,60,0);
     }
-    .btn-navy:hover { background: #162d52; border-color: #162d52; }
-    .btn-navy .btn-light {
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 65%);
+    .btn-navy:hover {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.6);
+      box-shadow: 0 0 25px rgba(255,255,255,0.2);
     }
-    .btn-navy .btn-stars { color: #fff; }
+    .btn-navy .btn-star svg { fill: #fff; }
 
     .btn-outline {
       background: transparent;
       color: #fff;
       border-color: rgba(255,255,255,0.5);
+      box-shadow: 0 0 0 rgba(255,255,255,0);
     }
-    .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
-    .btn-outline .btn-light {
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 65%);
+    .btn-outline:hover {
+      background: transparent;
+      color: #fff;
+      border-color: #fff;
+      box-shadow: 0 0 25px rgba(255,255,255,0.25);
     }
-    .btn-outline .btn-stars { color: #fff; }
+    .btn-outline .btn-star svg { fill: #fff; }
 
     /* ── CONTAINER ── */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
+    }
+
+    /* ── TRUCK ANIMATION ── */
+    @keyframes drive-truck {
+      0%   { transform: translateX(-330px); }
+      100% { transform: translateX(110vw); }
+    }
+    @keyframes spin-wheel {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .hero-truck {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 310px;
+      z-index: 0;
+      animation: drive-truck 14s linear infinite;
+      pointer-events: none;
+    }
+    .hero-truck .wheel {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: spin-wheel 1.2s linear infinite;
     }
 
     /* ── HERO ── */
@@ -864,12 +884,19 @@
       margin-bottom: 6px;
     }
     .cta-text p { color: rgba(255,255,255,0.85); font-size: 15px; }
-    .btn-white { background: #fff; color: var(--orange); border-color: #fff; }
-    .btn-white:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
-    .btn-white .btn-light {
-      background: radial-gradient(ellipse at center, rgba(204,34,34,0.35) 0%, transparent 65%);
+    .btn-white {
+      background: #fff;
+      color: var(--orange);
+      border-color: #fff;
+      box-shadow: 0 0 0 rgba(255,255,255,0);
     }
-    .btn-white .btn-stars { color: var(--orange); }
+    .btn-white:hover {
+      background: transparent;
+      color: #fff;
+      border-color: #fff;
+      box-shadow: 0 0 25px rgba(255,255,255,0.35);
+    }
+    .btn-white .btn-star svg { fill: #fff; }
 
     /* ── FOOTER ── */
     footer {
@@ -1042,6 +1069,127 @@
           <div><strong style="font-size:15px;">4.9 / 5.0</strong><br><small>Customer Rating</small></div>
         </div>
       </div>
+    </div>
+
+    <!-- F-150 work truck driving left to right across hero -->
+    <div class="hero-truck" aria-hidden="true">
+      <svg viewBox="0 0 310 108" xmlns="http://www.w3.org/2000/svg" width="310" height="108">
+
+        <!-- Ground shadows -->
+        <ellipse cx="85"  cy="106" rx="52" ry="5" fill="rgba(0,0,0,0.22)"/>
+        <ellipse cx="232" cy="106" rx="40" ry="5" fill="rgba(0,0,0,0.22)"/>
+
+        <!-- ── MAIN BODY: F-150 profile with wheel arch cutouts ──
+             Bed (left/rear): x=12–160, rail at y=50
+             Cab (right/front): roof at y=22, A-pillar slopes to y=50
+             Rear wheel arch: center x=85  (x=57 → x=113)
+             Front wheel arch: center x=232 (x=202 → x=262) -->
+        <path d="
+          M12,84
+          L12,50
+          L160,50
+          L163,22
+          L235,22
+          L258,50
+          L288,54
+          L293,66
+          L295,84
+          L262,84 A30,22 0 0 0 202,84
+          L113,84 A28,22 0 0 0 57,84
+          Z"
+          fill="white" stroke="#b8b8b8" stroke-width="1.5" stroke-linejoin="round"/>
+
+        <!-- ── BED ── -->
+        <!-- Bed top rail -->
+        <rect x="12" y="47" width="148" height="4" rx="1" fill="#e0e0e0"/>
+        <!-- Bed interior (open top, shows dark inside) -->
+        <rect x="17" y="51" width="139" height="13" fill="#c2c7cf" rx="1"/>
+        <!-- Bed floor line -->
+        <line x1="17" y1="63" x2="155" y2="63" stroke="#b0b5bc" stroke-width="1"/>
+        <!-- Stake pockets along top rail -->
+        <rect x="38"  y="47" width="3" height="5" rx="0.5" fill="#ccc"/>
+        <rect x="80"  y="47" width="3" height="5" rx="0.5" fill="#ccc"/>
+        <rect x="122" y="47" width="3" height="5" rx="0.5" fill="#ccc"/>
+        <!-- Tailgate face -->
+        <rect x="12" y="50" width="5" height="34" rx="1" fill="#ddd"/>
+        <!-- Tailgate handle indent -->
+        <rect x="13" y="65" width="3" height="4" rx="1" fill="#bbb"/>
+
+        <!-- ── CAB WINDOWS ── -->
+        <!-- C-pillar column (rear cab post) -->
+        <rect x="160" y="22" width="4" height="62" fill="#c8c8c8"/>
+        <!-- Small rear quarter window -->
+        <rect x="164" y="25" width="11" height="22" rx="1.5" fill="#7ab5d0" opacity="0.85"/>
+        <!-- B-pillar -->
+        <rect x="175" y="22" width="4" height="62" fill="#c8c8c8"/>
+        <!-- Main door window -->
+        <rect x="179" y="24" width="52" height="23" rx="2" fill="#7ab5d0" opacity="0.9"/>
+        <!-- Windshield (steep A-pillar rake) -->
+        <path d="M234,24 L256,48 L235,48 Z" fill="#7ab5d0" opacity="0.88"/>
+        <!-- Door handle -->
+        <rect x="218" y="61" width="12" height="3" rx="1.5" fill="#b0b0b0"/>
+        <!-- Running board below doors -->
+        <rect x="164" y="79" width="94" height="5" rx="2" fill="#d5d5d5"/>
+
+        <!-- ── HOOD ── -->
+        <!-- Hood crease / character line -->
+        <line x1="259" y1="51" x2="287" y2="54" stroke="#d0d0d0" stroke-width="1.2"/>
+
+        <!-- ── FRONT FACE ── -->
+        <!-- Headlight (rectangular, F-150 style) -->
+        <path d="M283,54 L292,54 L292,65 L283,62 Z" fill="#fffde0" stroke="#cccc00" stroke-width="0.5"/>
+        <!-- Amber turn indicator strip -->
+        <rect x="283" y="65" width="9" height="3" rx="1" fill="#f0a000" opacity="0.85"/>
+        <!-- Upper grille -->
+        <rect x="289" y="55" width="7" height="9"  rx="0.5" fill="#9a9a9a"/>
+        <line x1="291"   y1="55" x2="291"   y2="64" stroke="#777" stroke-width="0.8"/>
+        <line x1="293.5" y1="55" x2="293.5" y2="64" stroke="#777" stroke-width="0.8"/>
+        <!-- Lower grille -->
+        <rect x="289" y="66" width="7" height="9"  rx="0.5" fill="#9a9a9a"/>
+        <line x1="291"   y1="66" x2="291"   y2="75" stroke="#777" stroke-width="0.8"/>
+        <line x1="293.5" y1="66" x2="293.5" y2="75" stroke="#777" stroke-width="0.8"/>
+        <!-- Front bumper -->
+        <rect x="282" y="76" width="18" height="8" rx="2" fill="#c2c2c2"/>
+        <!-- Rear step bumper -->
+        <rect x="8"   y="75" width="10" height="9" rx="1" fill="#c2c2c2"/>
+        <!-- Rear bumper step notch -->
+        <rect x="10"  y="77" width="6"  height="3" rx="0.5" fill="#aaa"/>
+
+        <!-- ── WHEELS: 5-spoke alloy style ── -->
+        <!-- Rear wheel -->
+        <g class="wheel">
+          <circle cx="85" cy="91" r="17" fill="#1c1c1c"/>
+          <circle cx="85" cy="91" r="13" fill="#464646"/>
+          <!-- 5 spokes (clockwise from top, 72° apart) -->
+          <line x1="85"   y1="91" x2="85"   y2="78"   stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          <line x1="85"   y1="91" x2="95.5" y2="87.6" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          <line x1="85"   y1="91" x2="91.5" y2="99.9" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          <line x1="85"   y1="91" x2="78.5" y2="99.9" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          <line x1="85"   y1="91" x2="74.5" y2="87.6" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          <!-- Hub cap -->
+          <circle cx="85" cy="91" r="3.5" fill="#bbb"/>
+          <circle cx="85" cy="91" r="1.5" fill="#888"/>
+        </g>
+
+        <!-- Front wheel -->
+        <g class="wheel">
+          <circle cx="232" cy="91" r="17" fill="#1c1c1c"/>
+          <circle cx="232" cy="91" r="13" fill="#464646"/>
+          <!-- 5 spokes -->
+          <line x1="232" y1="91" x2="232"  y2="78"   stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          <line x1="232" y1="91" x2="242.5" y2="87.6" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          <line x1="232" y1="91" x2="238.5" y2="99.9" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          <line x1="232" y1="91" x2="225.5" y2="99.9" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          <line x1="232" y1="91" x2="221.5" y2="87.6" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          <!-- Hub cap -->
+          <circle cx="232" cy="91" r="3.5" fill="#bbb"/>
+          <circle cx="232" cy="91" r="1.5" fill="#888"/>
+        </g>
+
+        <!-- Exhaust puffs (exit from rear/left since driving right) -->
+        <circle cx="8" cy="77" r="5" fill="rgba(255,255,255,0.09)"/>
+        <circle cx="1" cy="74" r="4" fill="rgba(255,255,255,0.06)"/>
+      </svg>
     </div>
   </section>
 
@@ -1660,78 +1808,32 @@
   <!-- ── STAR BUTTON INITIALIZER ── -->
   <script>
   (function () {
-    // Star texture SVG path — evenodd fill creates dot "holes" in a solid field,
-    // giving a subtle star-pattern texture (matches the React StarButton component).
-    var STAR_PATH =
-      'M56.1 3.96C56.4645 3.96 56.76 4.25519 56.76 4.62C56.76 4.98481 56.4645 5.28 56.1 5.28C55.9131 5.28 55.7443 5.20201 55.624 5.07762C55.5632 5.01446 55.5147 4.93904 55.4829 4.8559C55.4552 4.78243 55.44 4.70315 55.44 4.62C55.44 4.5549 55.4494 4.49174 55.4668 4.43244C55.4906 4.35188 55.5292 4.27775 55.5795 4.21329C55.7004 4.05926 55.8885 3.96 56.1 3.96Z' +
-      'M40.26 17.16C40.6245 17.16 40.92 17.4552 40.92 17.82C40.92 18.1848 40.6245 18.48 40.26 18.48C39.8955 18.48 39.6 18.1848 39.6 17.82C39.6 17.4552 39.8955 17.16 40.26 17.16Z' +
-      'M74.58 5.28C74.7701 5.28 74.9413 5.36057 75.0618 5.48882C75.1359 5.58357 75.1595 5.62353C75.1711 5.64481 75.1906 5.68928C75.2226 5.76662 75.24 5.85106 75.24 5.94C75.24 6.1585 75.1336 6.3525 74.9699 6.47238C74.7247 6.58775 74.58 6.6 74.58 6.6C74.2156 6.6 73.92 6.30481 73.92 5.94C73.92 5.70862 73.979 5.50688 74.0032 5.61903C74.1595 5.41471 74.2728 5.35541C74.3647 5.30707 74.4691 5.28 74.58 5.28Z' +
-      'M21.66 33.52C22.0245 33.52 22.32 33.8152 22.32 34.18C22.32 34.5448 22.0245 34.84 21.66 34.84C21.2955 34.84 21 34.5448 21 34.18C21 33.8152 21.2955 33.52 21.66 33.52Z' +
-      'M8.16 32.86C8.16 32.4952 7.8645 32.2 7.5 32.2C7.1355 32.2 6.84 32.4952 6.84 32.86C6.84 33.2248 7.1355 33.52 7.5 33.52C7.8645 33.52 8.16 33.2248 8.16 32.86Z' +
-      'M7.5 23.68C7.8645 23.68 8.16 23.9752 8.16 24.34C8.16 24.7048 7.8645 25 7.5 25C7.1355 25 6.84 24.7048 6.84 24.34C6.84 23.9752 7.1355 23.68 7.5 23.68Z' +
-      'M19.32 18.48C19.32 18.1152 19.0245 17.82 18.66 17.82C18.2955 17.82 18 18.1152 18 18.48C18 18.8448 18.2955 19.14 18.66 19.14C19.0245 19.14 19.32 18.8448 19.32 18.48Z' +
-      'M5.66 11.84C6.0245 11.84 6.32001 12.1352 6.32001 12.5C6.32001 12.8648 6.0245 13.16 5.66 13.16C5.2955 13.16 5 12.8648 5 12.5C5 12.1352 5.2955 11.84 5.66 11.84Z' +
-      'M35.16 35.5C35.16 35.1352 34.8645 34.84 34.5 34.84C34.1355 34.84 33.84 35.1352 33.84 35.5C33.84 35.8648 34.1355 36.16 34.5 36.16C34.8645 36.16 35.16 35.8648 35.16 35.5Z' +
-      'M53.5 36.18C53.8645 36.18 54.16 36.4752 54.16 36.84C54.16 37.2048 53.8645 37.5 53.5 37.5C53.1355 37.5 52.84 37.2048 52.84 36.84C52.84 36.4752 53.1355 36.18 53.5 36.18Z' +
-      'M48.5 28.66C48.5 28.2952 48.2045 28 47.84 28C47.4755 28 47.18 28.2952 47.18 28.66C47.18 29.0248 47.4755 29.32 47.84 29.32C48.2045 29.32 48.5 29.0248 48.5 28.66Z' +
-      'M60.34 27.34C60.7045 27.34 61 27.6352 61 28C61 28.3648 60.7045 28.66 60.34 28.66C59.9755 28.66 59.68 28.3648 59.68 28C59.68 27.6352 59.9755 27.34 60.34 27.34Z' +
-      'M56.284 16.5C56.284 16.1352 55.9885 15.84 55.624 15.84C55.2595 15.84 54.964 16.1352 54.964 16.5C54.964 16.8648 55.2595 17.16 55.624 17.16C55.9885 17.16 56.284 16.8648 56.284 16.5Z' +
-      'M46.2 7.26C46.2 6.89519 45.9045 6.6 45.54 6.6C45.1755 6.6 44.88 6.89519 44.88 7.26C44.88 7.62481 45.1755 7.92 45.54 7.92C45.9045 7.92 46.2 7.62481 46.2 7.26Z' +
-      'M33 9.34C33 8.9752 32.7045 8.68 32.34 8.68C31.9755 8.68 31.68 8.9752 31.68 9.34C31.68 9.7048 31.9755 10 32.34 10C32.7045 10 33 9.7048 33 9.34Z' +
-      'M16 4.8559C16.3645 4.8559 16.66 5.1511 16.66 5.5159C16.66 5.8807 16.3645 6.1759 16 6.1759C15.6355 6.1759 15.34 5.8807 15.34 5.5159C15.34 5.1511 15.6355 4.8559 16 4.8559Z' +
-      'M69.66 21.16C69.66 20.7952 69.3645 20.5 69 20.5C68.6355 20.5 68.34 20.7952 68.34 21.16C68.34 21.5248 68.6355 21.82 69 21.82C69.3645 21.82 69.66 21.5248 69.66 21.16Z' +
-      'M80.52 15.18C80.52 14.8152 80.2245 14.52 79.86 14.52C79.4956 14.52 79.2 14.8152 79.2 15.18C79.2 15.5448 79.4956 15.84 79.86 15.84C80.2245 15.84 80.52 15.5448 80.52 15.18Z' +
-      'M85.66 24.34C86.0245 24.34 86.32 24.6352 86.32 25C86.32 25.3648 86.0245 25.66 85.66 25.66C85.2955 25.66 85 25.3648 85 25C85 24.6352 85.2955 24.34 85.66 24.34Z' +
-      'M91.32 10C91.32 9.6352 91.0245 9.34 90.66 9.34C90.2955 9.34 90 9.6352 90 10C90 10.3648 90.2955 10.66 90.66 10.66C91.0245 10.66 91.32 10.3648 91.32 10Z' +
-      'M32.34 26.68C32.34 26.3152 32.0445 26.02 31.68 26.02C31.3155 26.02 31.02 26.3152 31.02 26.68C31.02 27.0448 31.3155 27.34 31.68 27.34C32.0445 27.34 32.34 27.0448 32.34 26.68Z' +
-      // big rectangle last — evenodd punches the dots as transparent holes in the solid field
-      'M100 0H0V40H100V0Z';
+    // 4-pointed star SVG (same shape used in the React component)
+    var STAR_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53"><path d="M392.05 0c-20.9,210.08-184.06,378.41-392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93-210.06 184.09-378.37 392.05-407.74-207.98-29.38-371.16-197.69-392.06-407.78z"/></svg>';
 
-    function buildStarSVG() {
-      return '<svg viewBox="0 0 100 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path fill-rule="evenodd" clip-rule="evenodd" d="' + STAR_PATH + '" fill="currentColor"/>' +
-        '</svg>';
-    }
+    // Star positions: [initial top%, initial left%, hover top%, hover left%]
+    var STARS = [
+      [20, 20, -80, -30],
+      [45, 45, -25,  10],
+      [40, 40,  55,  25],
+      [20, 40,  30,  80],
+      [25, 45,  25, 115],
+      [ 5, 50,   5,  60],
+    ];
 
     function initBtn(btn) {
-      // Wrap original children in .btn-inner
-      var inner = document.createElement('span');
-      inner.className = 'btn-inner';
-      while (btn.firstChild) inner.appendChild(btn.firstChild);
-
-      // Star texture layer
-      var stars = document.createElement('span');
-      stars.className = 'btn-stars';
-      stars.innerHTML = buildStarSVG();
-
-      // Traveling glow layer
-      var light = document.createElement('span');
-      light.className = 'btn-light';
-
-      btn.appendChild(stars);
-      btn.appendChild(light);
-      btn.appendChild(inner);
-
-      // Set offset-path after layout is calculated
-      function setPath() {
-        var w = btn.offsetWidth;
-        var h = btn.offsetHeight;
-        btn.style.setProperty('--star-path', "path('M 0 0 H " + w + " V " + h + " H 0 V 0')");
-      }
-
-      // Two rAF frames to ensure layout is complete
-      requestAnimationFrame(function () {
-        requestAnimationFrame(setPath);
+      STARS.forEach(function(pos, i) {
+        var star = document.createElement('span');
+        star.className = 'btn-star btn-star-' + (i + 1);
+        star.innerHTML = STAR_SVG;
+        btn.appendChild(star);
       });
-
-      window.addEventListener('resize', setPath);
     }
 
     // Init all buttons once DOM is ready
     function init() {
       document.querySelectorAll('.btn').forEach(function (btn) {
-        // Skip if already initialized
-        if (!btn.querySelector('.btn-inner')) initBtn(btn);
+        if (!btn.querySelector('.btn-star')) initBtn(btn);
       });
     }
 
