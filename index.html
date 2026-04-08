@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rich Cortez & Sons Inc. | Appliance Installation, Repair & Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ── VARIABLES ── */
+    :root {
+      --navy:   #0c1f3c;
+      --navy2:  #0a1628;
+      --orange: #cc2222;
+      --orange2:#a81c1c;
+      --white:  #ffffff;
+      --gray:   #f4f6fa;
+      --text:   #555;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--navy2);
+      color: #ccc;
+      font-size: 13px;
+      padding: 8px 0;
+    }
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .topbar span { display: flex; align-items: center; gap: 6px; }
+    .topbar a { color: #ccc; }
+    .topbar a:hover { color: var(--orange); }
+    .topbar i { color: var(--orange); font-size: 12px; }
+    .topbar-right { display: flex; gap: 20px; align-items: center; }
+    .topbar-social { display: flex; gap: 10px; }
+    .topbar-social a {
+      width: 26px; height: 26px;
+      border: 1px solid #444;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .topbar-social a:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 46px; height: 46px;
+      background: var(--orange);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 22px;
+    }
+    .logo-text { line-height: 1.15; }
+    .logo-text strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+    .logo-text span {
+      font-size: 11px;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 4px;
+    }
+    .nav-links li a {
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active { color: var(--orange); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .nav-phone i { color: var(--orange); font-size: 16px; }
+    /* ── STAR BUTTON ── */
+    @keyframes star-btn {
+      0%   { offset-distance: 0%; }
+      100% { offset-distance: 100%; }
+    }
+
+    .btn {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 26px;
+      height: 44px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.15s, filter 0.2s;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+    .btn:active { transform: translateY(0); filter: brightness(0.95); }
+
+    /* Traveling glow — injected by JS as .btn-light */
+    .btn-light {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      offset-path: var(--star-path, none);
+      offset-distance: 0%;
+      animation: star-btn 3s linear infinite;
+      translate: -50% -50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Star texture overlay — injected by JS as .btn-stars */
+    .btn-stars {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.18;
+    }
+    .btn-stars svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    /* Original button content wrapper — injected by JS as .btn-inner */
+    .btn-inner {
+      position: relative;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* ── BUTTON VARIANTS ── */
+    .btn-orange {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+    .btn-orange:hover { background: var(--orange2); border-color: var(--orange2); }
+    .btn-orange .btn-light {
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.45) 0%, transparent 65%);
+    }
+    .btn-orange .btn-stars { color: #fff; }
+
+    .btn-navy {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+    .btn-navy:hover { background: #162d52; border-color: #162d52; }
+    .btn-navy .btn-light {
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 65%);
+    }
+    .btn-navy .btn-stars { color: #fff; }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.5);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+    .btn-outline .btn-light {
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 65%);
+    }
+    .btn-outline .btn-stars { color: #fff; }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      background-image: linear-gradient(110deg, #0c1f3c 55%, #162d52 100%);
+      position: relative;
+      overflow: hidden;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding-top: 60px;
+      padding-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content { flex: 1; max-width: 580px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(204,34,34,0.15);
+      border: 1px solid rgba(204,34,34,0.4);
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero-sub {
+      color: #a0b3cc;
+      font-size: 16px;
+      margin-bottom: 28px;
+      max-width: 460px;
+    }
+    .hero-phone {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .hero-phone-icon {
+      width: 52px; height: 52px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 22px;
+      flex-shrink: 0;
+      animation: ring 2.5s ease infinite;
+    }
+    @keyframes ring {
+      0%, 90%, 100% { transform: rotate(0deg); }
+      92% { transform: rotate(-15deg); }
+      96% { transform: rotate(15deg); }
+    }
+    .hero-phone-info strong {
+      display: block;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .hero-phone-info span { font-size: 12px; color: #8aadcc; text-transform: uppercase; letter-spacing: 1px; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-image {
+      flex-shrink: 0;
+      width: 360px;
+      position: relative;
+    }
+    .hero-img-wrap {
+      width: 320px;
+      height: 400px;
+      background: linear-gradient(135deg, #1e3a5f, #0c1f3c);
+      border-radius: 16px 16px 50% 50% / 16px 16px 40% 40%;
+      overflow: hidden;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top, rgba(204,34,34,0.15) 0%, transparent 60%);
+    }
+    .hero-worker {
+      font-size: 160px;
+      line-height: 1;
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
+      z-index: 1;
+      user-select: none;
+    }
+    .hero-badge-float {
+      position: absolute;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 800;
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(204,34,34,0.4);
+    }
+    .hero-badge-float.years {
+      top: 30px;
+      right: 0;
+      font-size: 12px;
+    }
+    .hero-badge-float.years strong { display: block; font-size: 26px; }
+    .hero-badge-float.rating {
+      bottom: 30px;
+      left: -20px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-badge-float.rating i { font-size: 18px; }
+
+    /* ── SERVICE STRIP ── */
+    .service-strip {
+      background: var(--orange);
+      padding: 0;
+    }
+    .service-strip .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 24px;
+      border-right: 1px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .strip-item:last-child { border-right: none; }
+    .strip-item:hover { background: rgba(0,0,0,0.1); }
+    .strip-icon {
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .strip-text strong {
+      display: block;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .strip-text span { font-size: 12px; color: rgba(255,255,255,0.75); }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 80px 0; }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--orange); }
+    .section-desc { color: var(--text); max-width: 540px; line-height: 1.75; }
+    .divider {
+      width: 50px; height: 4px;
+      background: var(--orange);
+      border-radius: 2px;
+      margin: 14px 0 24px;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: #fff; }
+    .about .container {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    /* Photo gallery */
+    .about-gallery {
+      flex-shrink: 0;
+      width: 460px;
+      position: relative;
+    }
+    .gallery-frame {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(12,31,60,0.18);
+      position: relative;
+      background: var(--navy);
+    }
+    .gallery-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+    }
+    .gallery-pair.active {
+      opacity: 1;
+      pointer-events: auto;
+      position: relative;
+    }
+    .gallery-pair img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+    /* progress bar */
+    .gallery-progress {
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 4px;
+      background: var(--orange);
+      width: 0%;
+      transition: width linear;
+      border-radius: 0 0 0 0;
+    }
+    .about-exp-badge {
+      position: absolute;
+      bottom: 14px;
+      right: -14px;
+      background: var(--navy);
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(12,31,60,0.3);
+      z-index: 2;
+    }
+    .about-exp-badge strong { display: block; font-size: 32px; font-weight: 900; color: var(--orange); }
+    .about-exp-badge span { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* gallery dots */
+    .gallery-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 14px;
+    }
+    .gallery-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: #ccc;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .gallery-dot.active { background: var(--orange); transform: scale(1.3); }
+
+    .about-content { flex: 1; }
+    .about-features {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 24px 0 32px;
+    }
+    .about-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .about-features li i { color: var(--orange); font-size: 16px; }
+
+    /* ── SERVICES ── */
+    .services { background: var(--gray); }
+    .services .section-header { text-align: center; margin-bottom: 50px; }
+    .services .section-header .section-desc { margin: 0 auto; }
+    .services .section-header .divider { margin: 14px auto 0; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card-icon {
+      width: 72px; height: 72px;
+      background: rgba(204,34,34,0.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px;
+      color: var(--orange);
+      margin: 0 auto 20px;
+      transition: background 0.3s;
+    }
+    .service-card:hover .service-card-icon { background: var(--orange); color: #fff; }
+    .service-card h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .service-card p { font-size: 14px; color: var(--text); line-height: 1.65; }
+    .service-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--orange);
+    }
+    .service-card-link:hover { gap: 10px; }
+
+    /* ── WHY CHOOSE US ── */
+    .why { background: var(--navy); padding: 80px 0; }
+    .why .container {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    .why-content { flex: 1; }
+    .why-content .section-label { color: var(--orange); }
+    .why-content .section-title { color: #fff; }
+    .why-content .section-desc { color: #8aadcc; }
+    .why-list {
+      list-style: none;
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      color: #c8d9e8;
+      font-size: 15px;
+    }
+    .why-list-icon {
+      width: 40px; height: 40px;
+      background: rgba(204,34,34,0.15);
+      border: 1px solid rgba(204,34,34,0.3);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange);
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .why-list li strong { display: block; color: #fff; font-size: 15px; margin-bottom: 2px; }
+    .why-image { flex-shrink: 0; width: 420px; }
+    .why-img-wrap {
+      background: linear-gradient(135deg, #1e3a5f 0%, #0c1f3c 100%);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      font-size: 100px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+    .why-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+    .why-stat {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      text-align: center;
+    }
+    .why-stat strong { display: block; font-size: 28px; font-weight: 900; color: var(--orange); }
+    .why-stat span { font-size: 12px; color: #8aadcc; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* ── PARTNERS ── */
+    .partners { background: #fff; padding: 50px 0; }
+    .partners .container { text-align: center; }
+    .partners h4 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #aaa;
+      margin-bottom: 32px;
+    }
+    .partners-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .partner-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 800;
+      color: #bbb;
+      transition: color 0.2s;
+      letter-spacing: -0.5px;
+    }
+    .partner-logo:hover { color: var(--navy); }
+    .partner-logo i { font-size: 22px; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--gray); }
+    .testimonials .section-header { text-align: center; margin-bottom: 50px; }
+    .testimonials .section-header .section-desc { margin: 0 auto; }
+    .testimonials .section-header .divider { margin: 14px auto 0; }
+
+    /* Carousel wrapper */
+    .carousel-outer {
+      position: relative;
+    }
+    .carousel-viewport {
+      overflow: hidden;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      flex: 0 0 calc((100% - 48px) / 3);
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border: 2px solid transparent;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.11);
+      border-color: var(--orange);
+    }
+    .testimonial-card .yelp-hint {
+      position: absolute;
+      top: 14px; right: 14px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #d32323;
+      display: flex; align-items: center; gap: 4px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .testimonial-card:hover .yelp-hint { opacity: 1; }
+    .testimonial-stars { color: var(--orange); margin-bottom: 14px; font-size: 14px; }
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-style: italic;
+      flex: 1;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .testimonial-author-info strong { display: block; font-size: 14px; font-weight: 700; color: var(--navy); }
+    .testimonial-author-info span { font-size: 12px; color: #aaa; }
+
+    /* Carousel arrows */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--orange);
+      color: var(--orange);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      z-index: 10;
+    }
+    .carousel-arrow:hover { background: var(--orange); color: #fff; transform: translateY(-50%) scale(1.08); }
+    .carousel-arrow:disabled { opacity: 0.3; pointer-events: none; }
+    .carousel-arrow.prev { left: -58px; }
+    .carousel-arrow.next { right: -58px; }
+
+    /* Dots */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 32px;
+    }
+    .carousel-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      padding: 0;
+    }
+    .carousel-dot.active { background: var(--orange); transform: scale(1.25); }
+
+    /* Yelp badge in header */
+    .yelp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #d32323;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 50px;
+      text-decoration: none;
+      margin-top: 18px;
+      transition: background 0.2s;
+    }
+    .yelp-badge:hover { background: #b01c1c; }
+
+    @media (max-width: 900px) {
+      .carousel-arrow.prev { left: -10px; }
+      .carousel-arrow.next { right: -10px; }
+      .testimonial-card { flex: 0 0 calc((100% - 24px) / 2); }
+    }
+    @media (max-width: 600px) {
+      .testimonial-card { flex: 0 0 100%; }
+      .carousel-arrow.prev { left: 0; }
+      .carousel-arrow.next { right: 0; }
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: var(--orange);
+      padding: 60px 0;
+    }
+    .cta-banner .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .cta-text h2 {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .cta-text p { color: rgba(255,255,255,0.85); font-size: 15px; }
+    .btn-white { background: #fff; color: var(--orange); border-color: #fff; }
+    .btn-white:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .btn-white .btn-light {
+      background: radial-gradient(ellipse at center, rgba(204,34,34,0.35) 0%, transparent 65%);
+    }
+    .btn-white .btn-stars { color: var(--orange); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy2);
+      color: #8aadcc;
+      padding: 70px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.4fr;
+      gap: 40px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .logo { margin-bottom: 16px; }
+    .footer-brand .logo-text strong { color: #fff; }
+    .footer-brand p { font-size: 14px; line-height: 1.75; margin-bottom: 20px; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .footer-social a:hover { background: var(--orange); color: #fff; }
+    .footer-col h5 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--orange);
+      display: inline-block;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links li { font-size: 14px; }
+    .footer-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #8aadcc;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .footer-links a:hover { color: var(--orange); gap: 12px; }
+    .footer-links a i { font-size: 10px; color: var(--orange); }
+    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; }
+    .footer-contact i { color: var(--orange); font-size: 15px; margin-top: 2px; }
+    .footer-bottom {
+      padding: 20px 0;
+      text-align: center;
+      font-size: 13px;
+      color: #5a7a99;
+    }
+    .footer-bottom span { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about .container, .why .container { flex-direction: column; }
+      .about-gallery, .why-image { width: 100%; max-width: 460px; margin: 0 auto; }
+      .about-exp-badge { right: 0; }
+      .hero-image { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .topbar .container { justify-content: center; }
+      .topbar-right { display: none; }
+      .nav-links, .nav-phone { display: none; }
+      .service-strip .container { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .about-features { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .why-stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .service-strip .container { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 32px; }
+      .cta-banner .container { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container">
+      <div style="display:flex;gap:20px;flex-wrap:wrap;">
+        <span><i class="fas fa-phone-alt"></i> <a href="tel:9254550720">(925) 455-0720</a></span>
+        <span><i class="fas fa-envelope"></i> <a href="mailto:sales@richcortezandsons.com">sales@richcortezandsons.com</a></span>
+        <span><i class="fas fa-clock"></i> Serving the Bay Area Since 1978</span>
+      </div>
+      <div class="topbar-right">
+        <span><i class="fas fa-map-marker-alt"></i> Livermore, CA — Bay Area</span>
+        <div class="topbar-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="container">
+      <div class="logo">
+        <div class="logo-icon"><i class="fas fa-wrench"></i></div>
+        <div class="logo-text">
+          <strong>Rich Cortez &amp; Sons Inc.</strong>
+          <span>Appliance Installation, Repair &amp; Service</span>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-phone">
+          <i class="fas fa-phone-alt"></i>
+          <span>(925) 455-0720</span>
+        </div>
+        <a href="#contact" class="btn btn-orange">Get A Quote</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-star"></i>
+          Trusted Bay Area Appliance Experts Since 1978
+        </div>
+        <h1>Best <span>Appliance</span><br>Installation &amp; Repair</h1>
+        <p class="hero-sub">
+          First-class residential and commercial appliance installation, repair, and service. Friendly, approachable, and serving the Bay Area for over 46 years.
+        </p>
+        <div class="hero-phone">
+          <div class="hero-phone-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="hero-phone-info">
+            <strong>(925) 455-0720</strong>
+            <span>Call Us For a Free Consultation</span>
+          </div>
+        </div>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-orange"><i class="fas fa-calendar-check"></i> Schedule Service</a>
+          <a href="#services" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);"><i class="fas fa-list"></i> Our Services</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-img-wrap">
+          <span class="hero-worker">🔧</span>
+        </div>
+        <div class="hero-badge-float years">
+          <strong>46+</strong>
+          Years of<br>Experience
+        </div>
+        <div class="hero-badge-float rating">
+          <i class="fas fa-star"></i>
+          <div><strong style="font-size:15px;">4.9 / 5.0</strong><br><small>Customer Rating</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE STRIP -->
+  <div class="service-strip">
+    <div class="container">
+      <div class="strip-item">
+        <div class="strip-icon"><i class="fas fa-tools"></i></div>
+        <div class="strip-text">
+          <strong>Appliance Repair</strong>
+          <span>Fast, Reliable Fixes</span>
+        </div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-icon"><i class="fas fa-plug"></i></div>
+        <div class="strip-text">
+          <strong>Appliance Installation</strong>
+          <span>Residential &amp; Commercial</span>
+        </div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-icon"><i class="fas fa-store"></i></div>
+        <div class="strip-text">
+          <strong>Commercial Service</strong>
+          <span>Business Appliance Solutions</span>
+        </div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-icon"><i class="fas fa-calendar-check"></i></div>
+        <div class="strip-text">
+          <strong>Maintenance Plans</strong>
+          <span>Keep Appliances Running</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+
+      <!-- PHOTO GALLERY -->
+      <div class="about-gallery">
+        <div class="gallery-frame" id="galleryFrame">
+
+          <div class="gallery-pair active" data-pair="0">
+            <img src="RC%201.jpeg" alt="Water heater system installation" />
+            <img src="RC%202.jpeg" alt="Plumbing rough-in framing" />
+          </div>
+
+          <div class="gallery-pair" data-pair="1">
+            <img src="RC%203.jpeg" alt="Copper pipe work" />
+            <img src="RC%204.jpeg" alt="Commercial rooftop AC unit" />
+          </div>
+
+          <div class="gallery-pair" data-pair="2">
+            <img src="RC%205.jpeg" alt="Carrier rooftop HVAC units" />
+            <img src="RC%206.jpeg" alt="Air handler and ductwork installation" />
+          </div>
+
+          <div class="gallery-pair" data-pair="3">
+            <img src="RC%207.jpeg" alt="Attic air handler installation" />
+            <img src="RC%208.jpeg" alt="Water heater and boiler system" />
+          </div>
+
+          <div class="gallery-pair" data-pair="4">
+            <img src="RC%209.jpeg" alt="Commercial water heater installation" />
+            <img src="RC%2010.jpeg" alt="Rich Cortez and Sons company truck" />
+          </div>
+
+          <div class="gallery-progress" id="galleryProgress"></div>
+        </div>
+
+        <div class="gallery-dots" id="galleryDots">
+          <button class="gallery-dot active" aria-label="Slide 1"></button>
+          <button class="gallery-dot" aria-label="Slide 2"></button>
+          <button class="gallery-dot" aria-label="Slide 3"></button>
+          <button class="gallery-dot" aria-label="Slide 4"></button>
+          <button class="gallery-dot" aria-label="Slide 5"></button>
+        </div>
+
+        <div class="about-exp-badge">
+          <strong>46+</strong>
+          <span>Years of<br>Experience</span>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <p class="section-label"><i class="fas fa-tools"></i> &nbsp;Who We Are</p>
+        <h2 class="section-title">46 Years Serving The<br><span>Bay Area</span></h2>
+        <div class="divider"></div>
+        <p class="section-desc">
+          Rich Cortez &amp; Sons Inc. has been the trusted name in residential and commercial HVAC, plumbing, and appliance installation, repair, and service across the Bay Area since 1978. We put our customers first — listening to what you need and delivering first-class results every time.
+        </p>
+        <ul class="about-features">
+          <li><i class="fas fa-check-circle"></i> Industry Leading Products</li>
+          <li><i class="fas fa-check-circle"></i> Residential &amp; Commercial</li>
+          <li><i class="fas fa-check-circle"></i> Quick Turnaround</li>
+          <li><i class="fas fa-check-circle"></i> 5-Star Yelp &amp; Google Rating</li>
+          <li><i class="fas fa-check-circle"></i> Friendly &amp; Approachable</li>
+          <li><i class="fas fa-check-circle"></i> Customer-First Service</li>
+        </ul>
+        <a href="#contact" class="btn btn-orange"><i class="fas fa-phone"></i> Call Us Today</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      const INTERVAL = 6000;
+      const pairs    = document.querySelectorAll('.gallery-pair');
+      const dots     = document.querySelectorAll('#galleryDots .gallery-dot');
+      const progress = document.getElementById('galleryProgress');
+      const total    = pairs.length;
+      let current    = 0;
+      let timer      = null;
+      let progTimer  = null;
+
+      function showPair(index) {
+        pairs[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (index + total) % total;
+        pairs[current].classList.add('active');
+        dots[current].classList.add('active');
+        startProgress();
+      }
+
+      function startProgress() {
+        // reset bar
+        progress.style.transition = 'none';
+        progress.style.width = '0%';
+        // force reflow so transition resets
+        void progress.offsetWidth;
+        progress.style.transition = 'width ' + INTERVAL + 'ms linear';
+        progress.style.width = '100%';
+      }
+
+      function startAuto() {
+        clearInterval(timer);
+        timer = setInterval(() => showPair(current + 1), INTERVAL);
+      }
+
+      // Dot clicks
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          showPair(i);
+          startAuto();
+        });
+      });
+
+      // Pause on hover
+      const frame = document.getElementById('galleryFrame');
+      frame.addEventListener('mouseenter', () => clearInterval(timer));
+      frame.addEventListener('mouseleave', () => {
+        startAuto();
+      });
+
+      // Kick off
+      startProgress();
+      startAuto();
+    })();
+  </script>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label"><i class="fas fa-cog"></i> &nbsp;What We Offer</p>
+        <h2 class="section-title">We Provide One Of The<br><span>Best Services</span></h2>
+        <div class="divider"></div>
+        <p class="section-desc">From new appliance installations to fast repairs, our experienced team handles it all with industry-leading products and quick turnaround times.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-card-icon"><i class="fas fa-plug"></i></div>
+          <h3>Appliance Installation</h3>
+          <p>Professional installation of all major residential and commercial appliances — done right the first time, every time.</p>
+          <a href="#contact" class="service-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon"><i class="fas fa-wrench"></i></div>
+          <h3>Appliance Repair</h3>
+          <p>Fast, reliable repair services for all major appliance brands. We diagnose the problem and fix it with quality parts.</p>
+          <a href="#contact" class="service-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon"><i class="fas fa-store"></i></div>
+          <h3>Commercial Appliance Service</h3>
+          <p>Keeping your business running with expert installation, repair, and maintenance of commercial-grade appliances.</p>
+          <a href="#contact" class="service-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon"><i class="fas fa-home"></i></div>
+          <h3>Residential Service</h3>
+          <p>Full-service home appliance care for kitchens, laundry rooms, and beyond — for families throughout the Bay Area.</p>
+          <a href="#contact" class="service-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon"><i class="fas fa-sync-alt"></i></div>
+          <h3>Appliance Replacement</h3>
+          <p>When repair isn't enough, we help you select and install industry-leading replacement appliances at competitive prices.</p>
+          <a href="#contact" class="service-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon"><i class="fas fa-calendar-check"></i></div>
+          <h3>Preventive Maintenance</h3>
+          <p>Routine maintenance plans to extend appliance life, improve efficiency, and prevent costly breakdowns before they happen.</p>
+          <a href="#contact" class="service-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="why">
+    <div class="container">
+      <div class="why-content">
+        <p class="section-label"><i class="fas fa-award"></i> &nbsp;Why Choose Us</p>
+        <h2 class="section-title">Trusted By Bay Area<br>Families &amp; Businesses</h2>
+        <div class="divider"></div>
+        <p class="section-desc">We combine technical expertise with a friendly, approachable attitude and a genuine care for our customers — delivering first-class service since 1978.</p>
+        <ul class="why-list">
+          <li>
+            <div class="why-list-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <strong>Quick Turnaround</strong>
+              We get the job done efficiently so your home or business isn't disrupted for long.
+            </div>
+          </li>
+          <li>
+            <div class="why-list-icon"><i class="fas fa-award"></i></div>
+            <div>
+              <strong>Industry Leading Products</strong>
+              We source and install only quality, industry-leading appliances and parts.
+            </div>
+          </li>
+          <li>
+            <div class="why-list-icon"><i class="fas fa-heart"></i></div>
+            <div>
+              <strong>Customer-First Approach</strong>
+              We listen to you and help you find exactly what you need — no pressure, no upsells.
+            </div>
+          </li>
+          <li>
+            <div class="why-list-icon"><i class="fas fa-handshake"></i></div>
+            <div>
+              <strong>46+ Years of Trust</strong>
+              Serving the Bay Area since 1978 — a proven track record families rely on.
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="why-image">
+        <div class="why-img-wrap">🏆</div>
+        <div class="why-stats">
+          <div class="why-stat">
+            <strong>5K+</strong>
+            <span>Jobs Done</span>
+          </div>
+          <div class="why-stat">
+            <strong>46+</strong>
+            <span>Years</span>
+          </div>
+          <div class="why-stat">
+            <strong>4.9★</strong>
+            <span>Rating</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <div class="partners">
+    <div class="container">
+      <h4>Industry Leading Brands We Work With</h4>
+      <div class="partners-logos">
+        <div class="partner-logo"><i class="fas fa-blender"></i> Whirlpool</div>
+        <div class="partner-logo"><i class="fas fa-temperature-low"></i> Samsung</div>
+        <div class="partner-logo"><i class="fas fa-bolt"></i> GE Appliances</div>
+        <div class="partner-logo"><i class="fas fa-fire-alt"></i> LG</div>
+        <div class="partner-logo"><i class="fas fa-cogs"></i> Bosch</div>
+        <div class="partner-logo"><i class="fas fa-utensils"></i> KitchenAid</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label"><i class="fas fa-heart"></i> &nbsp;Customer Reviews</p>
+        <h2 class="section-title">What People Say About<br><span>Rich Cortez &amp; Sons</span></h2>
+        <div class="divider"></div>
+        <p class="section-desc">Real 5-star reviews from our customers on Yelp. Click any review to visit our Yelp page.</p>
+        <a href="https://www.yelp.com/biz/rich-cortez-and-sons-livermore" target="_blank" rel="noopener" class="yelp-badge">
+          <i class="fab fa-yelp"></i> View All Reviews on Yelp
+        </a>
+      </div>
+
+      <div class="carousel-outer">
+        <button class="carousel-arrow prev" id="carouselPrev" aria-label="Previous reviews">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carouselTrack">
+
+            <!-- REVIEW 1 -->
+            <div class="testimonial-card" onclick="goToYelp()">
+              <span class="yelp-hint"><i class="fab fa-yelp"></i> View on Yelp</span>
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"Rich has been our appliance guy for years. He is honest, dependable, and very reasonably priced. He has worked on our washer, dryer, refrigerator and dishwasher. I highly recommend him!"</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" style="background:#1e3a5f;">L</div>
+                <div class="testimonial-author-info">
+                  <strong>Lori B.</strong>
+                  <span>Livermore, CA &nbsp;·&nbsp; Yelp Review</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- REVIEW 2 -->
+            <div class="testimonial-card" onclick="goToYelp()">
+              <span class="yelp-hint"><i class="fab fa-yelp"></i> View on Yelp</span>
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"Rich came out the same day I called. My washer was making a terrible noise and he had it fixed within an hour. Very professional and the price was fair. Will definitely use him again."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" style="background:#0c3d2b;">K</div>
+                <div class="testimonial-author-info">
+                  <strong>Karen M.</strong>
+                  <span>Pleasanton, CA &nbsp;·&nbsp; Yelp Review</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- REVIEW 3 -->
+            <div class="testimonial-card" onclick="goToYelp()">
+              <span class="yelp-hint"><i class="fab fa-yelp"></i> View on Yelp</span>
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"Called Rich about my dryer not heating. He diagnosed it over the phone, came the next morning with the right part, and had everything done in under 45 minutes. Super knowledgeable and friendly!"</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" style="background:#3d1e0c;">D</div>
+                <div class="testimonial-author-info">
+                  <strong>Dave S.</strong>
+                  <span>Dublin, CA &nbsp;·&nbsp; Yelp Review</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- REVIEW 4 -->
+            <div class="testimonial-card" onclick="goToYelp()">
+              <span class="yelp-hint"><i class="fab fa-yelp"></i> View on Yelp</span>
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"I've used Rich for years and he's always great. He's very knowledgeable, gets the job done quickly and is very affordable. I wouldn't use anyone else for appliance repair."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" style="background:#1a3a6b;">S</div>
+                <div class="testimonial-author-info">
+                  <strong>Susan H.</strong>
+                  <span>Livermore, CA &nbsp;·&nbsp; Yelp Review</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- REVIEW 5 -->
+            <div class="testimonial-card" onclick="goToYelp()">
+              <span class="yelp-hint"><i class="fab fa-yelp"></i> View on Yelp</span>
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"Wonderful service! Rich fixed my refrigerator quickly and for a very reasonable price. He was on time, courteous, and explained everything he was doing. Highly recommend to everyone in the area."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" style="background:#4a1a0c;">P</div>
+                <div class="testimonial-author-info">
+                  <strong>Patricia G.</strong>
+                  <span>San Ramon, CA &nbsp;·&nbsp; Yelp Review</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- REVIEW 6 -->
+            <div class="testimonial-card" onclick="goToYelp()">
+              <span class="yelp-hint"><i class="fab fa-yelp"></i> View on Yelp</span>
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"Rich is the best! Honest, dependable, and very experienced. He saved me from buying a new washer by fixing mine for a fraction of the cost. This is the only appliance repair company I'll ever call."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar" style="background:#1a4a2a;">T</div>
+                <div class="testimonial-author-info">
+                  <strong>Tom W.</strong>
+                  <span>Livermore, CA &nbsp;·&nbsp; Yelp Review</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /carousel-track -->
+        </div><!-- /carousel-viewport -->
+        <button class="carousel-arrow next" id="carouselNext" aria-label="Next reviews">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div><!-- /carousel-outer -->
+
+      <div class="carousel-dots" id="carouselDots"></div>
+
+    </div>
+  </section>
+
+  <script>
+    const YELP_URL = 'https://www.yelp.com/biz/rich-cortez-and-sons-livermore';
+
+    function goToYelp() {
+      if (confirm('This will take you to our Yelp page to read the full review.\n\nContinue to Yelp?')) {
+        window.open(YELP_URL, '_blank', 'noopener');
+      }
+    }
+
+    (function() {
+      const track      = document.getElementById('carouselTrack');
+      const prevBtn    = document.getElementById('carouselPrev');
+      const nextBtn    = document.getElementById('carouselNext');
+      const dotsWrap   = document.getElementById('carouselDots');
+      const cards      = track.querySelectorAll('.testimonial-card');
+      const total      = cards.length;
+
+      // How many cards visible depends on viewport
+      function visibleCount() {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 900) return 2;
+        return 3;
+      }
+
+      let current = 0;
+      let visible = visibleCount();
+      let maxIndex = total - visible;
+
+      function buildDots() {
+        dotsWrap.innerHTML = '';
+        const numDots = maxIndex + 1;
+        for (let i = 0; i < numDots; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === current ? ' active' : '');
+          dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+          dot.addEventListener('click', () => goTo(i));
+          dotsWrap.appendChild(dot);
+        }
+      }
+
+      function updateArrows() {
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current >= maxIndex;
+      }
+
+      function updateDots() {
+        dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      function cardWidth() {
+        return cards[0].getBoundingClientRect().width + 24; // card + gap
+      }
+
+      function goTo(index) {
+        current = Math.max(0, Math.min(index, maxIndex));
+        track.style.transform = 'translateX(-' + (current * cardWidth()) + 'px)';
+        updateArrows();
+        updateDots();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        const sec = document.getElementById('testimonials');
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          if (e.key === 'ArrowLeft') goTo(current - 1);
+          if (e.key === 'ArrowRight') goTo(current + 1);
+        }
+      });
+
+      // Touch / swipe support
+      let touchStartX = 0;
+      track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+      });
+
+      // Recalc on resize
+      window.addEventListener('resize', () => {
+        visible  = visibleCount();
+        maxIndex = total - visible;
+        current  = Math.min(current, maxIndex);
+        buildDots();
+        goTo(current);
+      });
+
+      buildDots();
+      goTo(0);
+    })();
+  </script>
+
+  <!-- CTA BANNER / CONTACT -->
+  <section class="cta-banner" id="contact">
+    <div class="container">
+      <div class="cta-text">
+        <h2>Ready To Get Started? Call Us Now!</h2>
+        <p>Serving the Bay Area since 1978. Friendly service, industry-leading products, quick turnaround.</p>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+        <a href="tel:9254550720" class="btn btn-white"><i class="fas fa-phone-alt"></i> (925) 455-0720</a>
+        <a href="mailto:sales@richcortezandsons.com" class="btn btn-navy"><i class="fas fa-envelope"></i> Email Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon"><i class="fas fa-wrench"></i></div>
+            <div class="logo-text">
+              <strong>Rich Cortez &amp; Sons Inc.</strong>
+              <span>Appliance Installation, Repair &amp; Service</span>
+            </div>
+          </div>
+          <p>
+            Proudly serving the Bay Area since 1978. We put our customers first — delivering first-class residential and commercial appliance services with friendly, approachable expertise.
+          </p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-yelp"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+            <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col">
+          <h5>Our Services</h5>
+          <ul class="footer-links">
+            <li><a href="#services"><i class="fas fa-chevron-right"></i> AC Installation</a></li>
+            <li><a href="#services"><i class="fas fa-chevron-right"></i> AC Repair</a></li>
+            <li><a href="#services"><i class="fas fa-chevron-right"></i> Plumbing</a></li>
+            <li><a href="#services"><i class="fas fa-chevron-right"></i> Drain Cleaning</a></li>
+            <li><a href="#services"><i class="fas fa-chevron-right"></i> Maintenance Plans</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul class="footer-contact">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Livermore, CA 94550<br>Serving the Greater Bay Area</span>
+            </li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <span><a href="tel:9254550720" style="color:#8aadcc;">(925) 455-0720</a></span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span><a href="mailto:sales@richcortezandsons.com" style="color:#8aadcc;">sales@richcortezandsons.com</a></span>
+            </li>
+            <li>
+              <i class="fas fa-clock"></i>
+              <span>Mon – Sat: 8:00AM – 5:00PM<br>Call (925) 455-0720 to schedule</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        &copy; 2025 <span>Rich Cortez &amp; Sons Inc.</span> All rights reserved. | Serving the Bay Area Since 1978 | Livermore, CA 94550
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── STAR BUTTON INITIALIZER ── -->
+  <script>
+  (function () {
+    // Star texture SVG path — evenodd fill creates dot "holes" in a solid field,
+    // giving a subtle star-pattern texture (matches the React StarButton component).
+    var STAR_PATH =
+      'M56.1 3.96C56.4645 3.96 56.76 4.25519 56.76 4.62C56.76 4.98481 56.4645 5.28 56.1 5.28C55.9131 5.28 55.7443 5.20201 55.624 5.07762C55.5632 5.01446 55.5147 4.93904 55.4829 4.8559C55.4552 4.78243 55.44 4.70315 55.44 4.62C55.44 4.5549 55.4494 4.49174 55.4668 4.43244C55.4906 4.35188 55.5292 4.27775 55.5795 4.21329C55.7004 4.05926 55.8885 3.96 56.1 3.96Z' +
+      'M40.26 17.16C40.6245 17.16 40.92 17.4552 40.92 17.82C40.92 18.1848 40.6245 18.48 40.26 18.48C39.8955 18.48 39.6 18.1848 39.6 17.82C39.6 17.4552 39.8955 17.16 40.26 17.16Z' +
+      'M74.58 5.28C74.7701 5.28 74.9413 5.36057 75.0618 5.48882C75.1359 5.58357 75.1595 5.62353C75.1711 5.64481 75.1906 5.68928C75.2226 5.76662 75.24 5.85106 75.24 5.94C75.24 6.1585 75.1336 6.3525 74.9699 6.47238C74.7247 6.58775 74.58 6.6 74.58 6.6C74.2156 6.6 73.92 6.30481 73.92 5.94C73.92 5.70862 73.979 5.50688 74.0032 5.61903C74.1595 5.41471 74.2728 5.35541C74.3647 5.30707 74.4691 5.28 74.58 5.28Z' +
+      'M21.66 33.52C22.0245 33.52 22.32 33.8152 22.32 34.18C22.32 34.5448 22.0245 34.84 21.66 34.84C21.2955 34.84 21 34.5448 21 34.18C21 33.8152 21.2955 33.52 21.66 33.52Z' +
+      'M8.16 32.86C8.16 32.4952 7.8645 32.2 7.5 32.2C7.1355 32.2 6.84 32.4952 6.84 32.86C6.84 33.2248 7.1355 33.52 7.5 33.52C7.8645 33.52 8.16 33.2248 8.16 32.86Z' +
+      'M7.5 23.68C7.8645 23.68 8.16 23.9752 8.16 24.34C8.16 24.7048 7.8645 25 7.5 25C7.1355 25 6.84 24.7048 6.84 24.34C6.84 23.9752 7.1355 23.68 7.5 23.68Z' +
+      'M19.32 18.48C19.32 18.1152 19.0245 17.82 18.66 17.82C18.2955 17.82 18 18.1152 18 18.48C18 18.8448 18.2955 19.14 18.66 19.14C19.0245 19.14 19.32 18.8448 19.32 18.48Z' +
+      'M5.66 11.84C6.0245 11.84 6.32001 12.1352 6.32001 12.5C6.32001 12.8648 6.0245 13.16 5.66 13.16C5.2955 13.16 5 12.8648 5 12.5C5 12.1352 5.2955 11.84 5.66 11.84Z' +
+      'M35.16 35.5C35.16 35.1352 34.8645 34.84 34.5 34.84C34.1355 34.84 33.84 35.1352 33.84 35.5C33.84 35.8648 34.1355 36.16 34.5 36.16C34.8645 36.16 35.16 35.8648 35.16 35.5Z' +
+      'M53.5 36.18C53.8645 36.18 54.16 36.4752 54.16 36.84C54.16 37.2048 53.8645 37.5 53.5 37.5C53.1355 37.5 52.84 37.2048 52.84 36.84C52.84 36.4752 53.1355 36.18 53.5 36.18Z' +
+      'M48.5 28.66C48.5 28.2952 48.2045 28 47.84 28C47.4755 28 47.18 28.2952 47.18 28.66C47.18 29.0248 47.4755 29.32 47.84 29.32C48.2045 29.32 48.5 29.0248 48.5 28.66Z' +
+      'M60.34 27.34C60.7045 27.34 61 27.6352 61 28C61 28.3648 60.7045 28.66 60.34 28.66C59.9755 28.66 59.68 28.3648 59.68 28C59.68 27.6352 59.9755 27.34 60.34 27.34Z' +
+      'M56.284 16.5C56.284 16.1352 55.9885 15.84 55.624 15.84C55.2595 15.84 54.964 16.1352 54.964 16.5C54.964 16.8648 55.2595 17.16 55.624 17.16C55.9885 17.16 56.284 16.8648 56.284 16.5Z' +
+      'M46.2 7.26C46.2 6.89519 45.9045 6.6 45.54 6.6C45.1755 6.6 44.88 6.89519 44.88 7.26C44.88 7.62481 45.1755 7.92 45.54 7.92C45.9045 7.92 46.2 7.62481 46.2 7.26Z' +
+      'M33 9.34C33 8.9752 32.7045 8.68 32.34 8.68C31.9755 8.68 31.68 8.9752 31.68 9.34C31.68 9.7048 31.9755 10 32.34 10C32.7045 10 33 9.7048 33 9.34Z' +
+      'M16 4.8559C16.3645 4.8559 16.66 5.1511 16.66 5.5159C16.66 5.8807 16.3645 6.1759 16 6.1759C15.6355 6.1759 15.34 5.8807 15.34 5.5159C15.34 5.1511 15.6355 4.8559 16 4.8559Z' +
+      'M69.66 21.16C69.66 20.7952 69.3645 20.5 69 20.5C68.6355 20.5 68.34 20.7952 68.34 21.16C68.34 21.5248 68.6355 21.82 69 21.82C69.3645 21.82 69.66 21.5248 69.66 21.16Z' +
+      'M80.52 15.18C80.52 14.8152 80.2245 14.52 79.86 14.52C79.4956 14.52 79.2 14.8152 79.2 15.18C79.2 15.5448 79.4956 15.84 79.86 15.84C80.2245 15.84 80.52 15.5448 80.52 15.18Z' +
+      'M85.66 24.34C86.0245 24.34 86.32 24.6352 86.32 25C86.32 25.3648 86.0245 25.66 85.66 25.66C85.2955 25.66 85 25.3648 85 25C85 24.6352 85.2955 24.34 85.66 24.34Z' +
+      'M91.32 10C91.32 9.6352 91.0245 9.34 90.66 9.34C90.2955 9.34 90 9.6352 90 10C90 10.3648 90.2955 10.66 90.66 10.66C91.0245 10.66 91.32 10.3648 91.32 10Z' +
+      'M32.34 26.68C32.34 26.3152 32.0445 26.02 31.68 26.02C31.3155 26.02 31.02 26.3152 31.02 26.68C31.02 27.0448 31.3155 27.34 31.68 27.34C32.0445 27.34 32.34 27.0448 32.34 26.68Z' +
+      // big rectangle last — evenodd punches the dots as transparent holes in the solid field
+      'M100 0H0V40H100V0Z';
+
+    function buildStarSVG() {
+      return '<svg viewBox="0 0 100 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+        '<path fill-rule="evenodd" clip-rule="evenodd" d="' + STAR_PATH + '" fill="currentColor"/>' +
+        '</svg>';
+    }
+
+    function initBtn(btn) {
+      // Wrap original children in .btn-inner
+      var inner = document.createElement('span');
+      inner.className = 'btn-inner';
+      while (btn.firstChild) inner.appendChild(btn.firstChild);
+
+      // Star texture layer
+      var stars = document.createElement('span');
+      stars.className = 'btn-stars';
+      stars.innerHTML = buildStarSVG();
+
+      // Traveling glow layer
+      var light = document.createElement('span');
+      light.className = 'btn-light';
+
+      btn.appendChild(stars);
+      btn.appendChild(light);
+      btn.appendChild(inner);
+
+      // Set offset-path after layout is calculated
+      function setPath() {
+        var w = btn.offsetWidth;
+        var h = btn.offsetHeight;
+        btn.style.setProperty('--star-path', "path('M 0 0 H " + w + " V " + h + " H 0 V 0')");
+      }
+
+      // Two rAF frames to ensure layout is complete
+      requestAnimationFrame(function () {
+        requestAnimationFrame(setPath);
+      });
+
+      window.addEventListener('resize', setPath);
+    }
+
+    // Init all buttons once DOM is ready
+    function init() {
+      document.querySelectorAll('.btn').forEach(function (btn) {
+        // Skip if already initialized
+        if (!btn.querySelector('.btn-inner')) initBtn(btn);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+
+</body>
+</html>
