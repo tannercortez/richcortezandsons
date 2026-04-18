@@ -479,7 +479,7 @@
       text-transform: uppercase;
       line-height: 1.1;
       display: block;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      text-shadow: 1px 1px 0 rgba(0,0,0,0.5), 2px 2px 0 rgba(0,0,0,0.35), 3px 3px 6px rgba(0,0,0,0.25);
       white-space: nowrap;
     }
     .hero-content--centered {
@@ -1418,6 +1418,7 @@
       gap: 28px;
     }
     .sector-services-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .sector-services-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
     .sector-services-grid.cols-2 { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: 0 auto; }
     .sector-card {
       background: #fff;
@@ -1480,7 +1481,8 @@
     /* Photo background sector cards */
     .sector-card--hvac,
     .sector-card--plumbing,
-    .sector-card--solar {
+    .sector-card--solar,
+    .sector-card--appliance {
       background-size: cover;
       background-position: center;
     }
@@ -1508,27 +1510,39 @@
       background-image: linear-gradient(rgba(12,31,60,0.22), rgba(12,31,60,0.22)),
                         url('solar%20panels%20residential.jpg');
     }
+    .sector-card--appliance {
+      background-image: linear-gradient(rgba(12,31,60,0.38), rgba(12,31,60,0.38)),
+                        url('fridge.jpg');
+    }
+    .sector-card--appliance:hover {
+      background-image: linear-gradient(rgba(12,31,60,0.22), rgba(12,31,60,0.22)),
+                        url('fridge.jpg');
+    }
     .sector-card.sector-card--hvac h3,
     .sector-card.sector-card--plumbing h3,
-    .sector-card.sector-card--solar h3 {
+    .sector-card.sector-card--solar h3,
+    .sector-card.sector-card--appliance h3 {
       color: #fff;
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, -1px 0 0 #000, 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000;
     }
     .sector-card.sector-card--hvac p,
     .sector-card.sector-card--plumbing p,
-    .sector-card.sector-card--solar p {
+    .sector-card.sector-card--solar p,
+    .sector-card.sector-card--appliance p {
       color: #fff;
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, -1px 0 0 #000, 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000;
     }
     .sector-card--hvac .sector-card-icon,
     .sector-card--plumbing .sector-card-icon,
-    .sector-card--solar .sector-card-icon {
+    .sector-card--solar .sector-card-icon,
+    .sector-card--appliance .sector-card-icon {
       background: rgba(255,255,255,0.15);
       color: #fff;
     }
     .sector-card--hvac:hover .sector-card-icon,
     .sector-card--plumbing:hover .sector-card-icon,
-    .sector-card--solar:hover .sector-card-icon {
+    .sector-card--solar:hover .sector-card-icon,
+    .sector-card--appliance:hover .sector-card-icon {
       background: var(--orange);
       color: #fff;
     }
@@ -1560,6 +1574,7 @@
       border-radius: 8px;
     }
     .sector-card:hover h3 { font-size: 23px; background: #cc2222; color: #fff; padding: 6px 18px; width: fit-content; margin: 0 auto; }
+    .sector-card--appliance:hover h3, .sector-card--solar:hover h3 { font-size: 17px; padding: 6px 14px; }
     .sector-card:hover p  { font-size: 16px; display: inline; background: #cc2222; color: #fff; padding: 5px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
     .sector-cta {
       text-align: center;
@@ -1567,6 +1582,7 @@
     }
     @media (max-width: 768px) {
       .sector-services-grid.cols-3 { grid-template-columns: 1fr; }
+      .sector-services-grid.cols-4 { grid-template-columns: 1fr; }
       .sector-services-grid.cols-2 { grid-template-columns: 1fr; }
     }
 
@@ -1750,7 +1766,7 @@
         <div class="logo-icon"><i class="fas fa-wrench"></i></div>
         <div class="logo-text">
           <strong>Rich Cortez &amp; Sons Inc.</strong>
-          <span>Appliance Installation, Repair &amp; Service</span>
+          <span>HVAC, Plumbing, Appliance Repair</span>
         </div>
       </div>
       <ul class="nav-links">
@@ -1766,7 +1782,7 @@
           <i class="fas fa-phone-alt"></i>
           <a href="tel:+19254550720">(925) 455-0720</a>
         </div>
-        <button onclick="openQuoteModal()" class="btn btn-orange">Get A Quote</button>
+        <button onclick="openQuoteModal()" class="btn btn-orange">Contact Us</button>
       </div>
     </div>
   </nav>
@@ -1777,7 +1793,8 @@
     <div class="hero-inner">
     <div class="hero-company-banner">
       <div class="hero-ribbon-body">
-        <span>Rich Cortez and Sons Inc.</span>
+        <span>Rich Cortez &amp; Sons Inc.</span>
+        <span style="font-size: 0.9em; display: block;">Family Owned Since 1978</span>
       </div>
     </div>
     <div class="container">
@@ -1934,7 +1951,7 @@
         <a href="#residential" class="choice-card choice-card--residential">
           <div class="choice-card-icon"><i class="fas fa-home"></i></div>
           <h3><span class="card-label">Residential</span></h3>
-          <p><span class="card-label">HVAC, plumbing, and solar installation services tailored for your home.</span></p>
+          <p><span class="card-label">HVAC, Plumbing, Appliance Repair, and Solar Installation.</span></p>
           <span class="choice-arrow">Learn More <i class="fas fa-arrow-right"></i></span>
         </a>
         <a href="#commercial" class="choice-card choice-card--commercial">
@@ -1955,7 +1972,7 @@
         <h2>Built For Your <span>Home</span></h2>
         <p>We specialize in keeping your home comfortable, efficient, and running smoothly — from heating and cooling to clean water and renewable energy.</p>
       </div>
-      <div class="sector-services-grid cols-3">
+      <div class="sector-services-grid cols-4">
 
         <div class="sector-card sector-card--hvac" onclick="openQuoteModal('residential','HVAC')">
           <div class="sector-card-icon"><i class="fas fa-wind"></i></div>
@@ -1967,6 +1984,12 @@
           <div class="sector-card-icon"><i class="fas fa-faucet"></i></div>
           <h3>Plumbing</h3>
           <p>From water heater installation to pipe repair and fixture upgrades, our licensed plumbers handle every residential plumbing need with precision and care.</p>
+        </div>
+
+        <div class="sector-card sector-card--appliance" onclick="openQuoteModal('residential','Appliance Repair')">
+          <div class="sector-card-icon"><i class="fas fa-blender"></i></div>
+          <h3>Appliance Repair</h3>
+          <p>When your refrigerator, washer, dryer, dishwasher, or oven breaks down, we get it running again fast. Our technicians diagnose and repair all major home appliances, saving you the cost of replacement.</p>
         </div>
 
         <div class="sector-card sector-card--solar" onclick="openQuoteModal('residential','Solar Installation')">
@@ -2658,6 +2681,7 @@
           <div class="service-pills">
             <span class="service-pill" onclick="togglePill(this)">HVAC</span>
             <span class="service-pill" onclick="togglePill(this)">Plumbing</span>
+            <span class="service-pill" onclick="togglePill(this)">Appliance Repair</span>
             <span class="service-pill" onclick="togglePill(this)">Solar Installation</span>
             <span class="service-pill" onclick="togglePill(this)">Other</span>
           </div>
