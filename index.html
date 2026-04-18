@@ -1151,7 +1151,7 @@
       }
       .hero-inner {
         position: relative;
-        padding-top: 4px;
+        padding-top: 0;
         padding-bottom: 20px;
         background: transparent;
       }
@@ -1178,6 +1178,12 @@
       .hero-ctas { gap: 10px; }
       /* Hide truck animation on mobile — saves height */
       .hero-truck { display: none; }
+      /* Replace hard stroke outlines with a clean soft shadow — prevents blur */
+      .hero-sub,
+      .hero-phone-info strong,
+      .hero-phone-info span {
+        text-shadow: 0 1px 6px rgba(0,0,0,0.85);
+      }
     }
     @media (max-width: 480px) {
       .service-strip .container { grid-template-columns: 1fr; }
