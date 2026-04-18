@@ -1137,11 +1137,57 @@
       .about-features { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .why-stats { grid-template-columns: 1fr 1fr; }
+
+      /* ── HERO MOBILE FIX ── */
+      /* Let content drive the hero height; cover image always fills behind it */
+      .hero { height: auto; }
+      .hero-bg-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .hero-inner {
+        position: relative;
+        padding-top: 14px;
+        padding-bottom: 20px;
+      }
+      /* Ribbon: smaller, allow wrap */
+      .hero-company-banner::before,
+      .hero-company-banner::after {
+        border-top-width: 18px;
+        border-bottom-width: 18px;
+        border-right-width: 16px;
+        border-left-width: 16px;
+      }
+      .hero-ribbon-body { padding: 8px 20px; }
+      .hero-ribbon-body span { font-size: clamp(14px, 4.5vw, 22px); white-space: normal; }
+      /* Tighten container */
+      .hero .container { padding-top: 12px; padding-bottom: 0; }
+      /* Sub-text */
+      .hero-content--centered .hero-sub { font-size: 13px; margin-bottom: 12px; }
+      /* Phone row */
+      .hero-phone { margin-bottom: 14px; gap: 10px; }
+      .hero-phone-icon { width: 38px; height: 38px; font-size: 15px; }
+      .hero-phone-info strong { font-size: 17px; }
+      .hero-phone-info span { font-size: 10px; letter-spacing: 0.5px; }
+      /* CTA buttons */
+      .hero-ctas { gap: 10px; }
+      /* Hide truck animation on mobile — saves height */
+      .hero-truck { display: none; }
     }
     @media (max-width: 480px) {
       .service-strip .container { grid-template-columns: 1fr; }
       .hero h1 { font-size: 32px; }
       .cta-banner .container { flex-direction: column; text-align: center; }
+      /* Extra tightening for small phones */
+      .hero-content--centered .hero-sub { font-size: 12px; margin-bottom: 10px; }
+      .hero-phone { margin-bottom: 12px; gap: 8px; }
+      .hero-phone-icon { width: 34px; height: 34px; font-size: 14px; }
+      .hero-phone-info strong { font-size: 15px; }
+      .hero-ctas .btn { font-size: 13px; padding: 10px 14px; }
     }
 
     /* ── SERVICE CHOICE ── */
