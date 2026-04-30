@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residential HVAC Services | Rich Cortez & Sons Inc.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --navy:   #0c1f3c;
+      --navy2:  #0a1628;
+      --orange: #cc2222;
+      --orange2:#a81c1c;
+      --white:  #ffffff;
+      --gray:   #f4f6fa;
+      --text:   #555;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--navy2);
+      color: #ccc;
+      font-size: 13px;
+      padding: 8px 0;
+    }
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .topbar span { display: flex; align-items: center; gap: 6px; }
+    .topbar a { color: #ccc; }
+    .topbar a:hover { color: var(--orange); }
+    .topbar i { color: var(--orange); font-size: 12px; }
+    .topbar-right { display: flex; gap: 20px; align-items: center; }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon {
+      width: 46px; height: 46px;
+      background: var(--orange);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 22px;
+    }
+    .logo-text { line-height: 1.15; }
+    .logo-text strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+    .logo-text span {
+      font-size: 11px;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 4px;
+    }
+    .nav-links li a {
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active { color: var(--orange); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .nav-phone i { color: var(--orange); font-size: 16px; }
+    .nav-phone a { color: var(--navy); font-weight: 700; }
+    .nav-phone a:hover { color: var(--orange); }
+
+    /* ── BUTTON ── */
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border-radius: 6px;
+      border: 3px solid;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      white-space: nowrap;
+      text-decoration: none;
+      overflow: visible;
+    }
+    .btn:active { transform: scale(0.95); }
+    .btn-star {
+      position: absolute;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0;
+    }
+    .btn-star svg { width: 100%; height: auto; display: block; }
+    .btn:hover .btn-star { opacity: 1; }
+    .btn-star-1 { top: 20%; left: 20%; width: 25px; transition: top 1000ms cubic-bezier(0.05,0.83,0.43,0.96), left 1000ms cubic-bezier(0.05,0.83,0.43,0.96), filter 1000ms, opacity 200ms; }
+    .btn-star-2 { top: 45%; left: 45%; width: 15px; transition: top 1000ms cubic-bezier(0,0.4,0,1.01), left 1000ms cubic-bezier(0,0.4,0,1.01), filter 1000ms, opacity 200ms; }
+    .btn-star-3 { top: 40%; left: 40%; width: 5px; transition: top 1000ms cubic-bezier(0,0.4,0,1.01), left 1000ms cubic-bezier(0,0.4,0,1.01), filter 1000ms, opacity 200ms; }
+    .btn-star-4 { top: 20%; left: 40%; width: 8px; transition: top 800ms cubic-bezier(0,0.4,0,1.01), left 800ms cubic-bezier(0,0.4,0,1.01), filter 800ms, opacity 200ms; }
+    .btn-star-5 { top: 25%; left: 45%; width: 15px; transition: top 600ms cubic-bezier(0,0.4,0,1.01), left 600ms cubic-bezier(0,0.4,0,1.01), filter 600ms, opacity 200ms; }
+    .btn-star-6 { top: 5%;  left: 50%; width: 5px; transition: top 800ms ease-in-out, left 800ms ease-in-out, filter 800ms, opacity 200ms; }
+    .btn:hover .btn-star-1 { top: -80%; left: -30%; filter: drop-shadow(0 0 10px currentColor); }
+    .btn:hover .btn-star-2 { top: -25%; left:  10%; filter: drop-shadow(0 0 10px currentColor); }
+    .btn:hover .btn-star-3 { top:  55%; left:  25%; filter: drop-shadow(0 0 10px currentColor); }
+    .btn:hover .btn-star-4 { top:  30%; left:  80%; filter: drop-shadow(0 0 10px currentColor); }
+    .btn:hover .btn-star-5 { top:  25%; left: 115%; filter: drop-shadow(0 0 10px currentColor); }
+    .btn:hover .btn-star-6 { top:   5%; left:  60%; filter: drop-shadow(0 0 10px currentColor); }
+
+    .btn-orange {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+      box-shadow: 0 0 0 rgba(204,34,34,0);
+    }
+    .btn-orange:hover {
+      background: transparent;
+      color: var(--orange);
+      box-shadow: 0 0 25px rgba(204,34,34,0.55);
+    }
+    .btn-orange .btn-star svg { fill: var(--orange); }
+
+    .btn-navy {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+    .btn-navy:hover {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.6);
+      box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    }
+    .btn-navy .btn-star svg { fill: #fff; }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--navy2) 0%, var(--navy) 100%);
+      padding: 70px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-hero .breadcrumb {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .page-hero .breadcrumb a { color: rgba(255,255,255,0.55); }
+    .page-hero .breadcrumb a:hover { color: var(--orange); }
+    .page-hero .breadcrumb i { font-size: 10px; }
+    .page-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(204,34,34,0.18);
+      border: 1px solid rgba(204,34,34,0.4);
+      color: #f08080;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+    .page-hero h1 {
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 18px;
+    }
+    .page-hero h1 span { color: var(--orange); }
+    .page-hero p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.75);
+      max-width: 620px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .page-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .page-hero-icon {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 200px;
+      color: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+
+    /* ── CONTENT LAYOUT ── */
+    .service-content {
+      padding: 70px 0;
+    }
+    .service-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ── SERVICE SECTIONS ── */
+    .service-intro {
+      font-size: 17px;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    .service-block {
+      margin-bottom: 48px;
+    }
+    .service-block-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--gray);
+    }
+    .service-block-icon {
+      width: 48px; height: 48px;
+      background: var(--orange);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .service-block h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .service-block p {
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .service-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .service-list li::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    /* ── SERVICE AREA ── */
+    .service-area-block {
+      background: var(--gray);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+    }
+    .service-area-block h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .service-area-block h2 i { color: var(--orange); }
+    .service-area-block p {
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .city-list {
+      font-size: 15px;
+      color: var(--navy);
+      font-weight: 500;
+      line-height: 2;
+    }
+    .city-list span {
+      display: inline-block;
+      background: #fff;
+      border: 1px solid #dde3ee;
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin: 3px 4px;
+      font-size: 13px;
+    }
+
+    /* ── EMERGENCY BANNER ── */
+    .emergency-block {
+      background: linear-gradient(135deg, var(--navy2), var(--navy));
+      border-radius: 14px;
+      padding: 30px 32px;
+      color: #fff;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .emergency-block-icon {
+      width: 52px; height: 52px;
+      background: var(--orange);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .emergency-block h2 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .emergency-block p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+    .sidebar-cta {
+      background: var(--orange);
+      border-radius: 14px;
+      padding: 28px 24px;
+      color: #fff;
+      text-align: center;
+    }
+    .sidebar-cta h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .sidebar-cta p {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .sidebar-cta .btn {
+      background: #fff;
+      color: var(--orange);
+      border-color: #fff;
+      width: 100%;
+      justify-content: center;
+      font-size: 15px;
+    }
+    .sidebar-cta .btn:hover {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.7);
+    }
+    .sidebar-cta .btn .btn-star svg { fill: #fff; }
+
+    .sidebar-contact {
+      background: var(--gray);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .sidebar-contact h4 {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .sidebar-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .sidebar-contact-item i { color: var(--orange); margin-top: 2px; }
+    .sidebar-contact-item a { color: var(--navy); font-weight: 600; }
+    .sidebar-contact-item a:hover { color: var(--orange); }
+
+    .sidebar-services {
+      background: #fff;
+      border: 2px solid var(--gray);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .sidebar-services h4 {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .sidebar-services ul { list-style: none; }
+    .sidebar-services li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--gray);
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .sidebar-services li:last-child a { border-bottom: none; }
+    .sidebar-services li a:hover { color: var(--orange); gap: 14px; }
+    .sidebar-services li a i { color: var(--orange); font-size: 12px; }
+    .sidebar-services li a.current { color: var(--orange); font-weight: 700; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy2);
+      color: #8aadcc;
+      padding: 60px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+    .footer-brand .logo { margin-bottom: 16px; }
+    .footer-brand .logo-text strong { color: #fff; }
+    .footer-brand p { font-size: 14px; line-height: 1.75; margin-bottom: 20px; }
+    .footer-col h5 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(255,255,255,0.08);
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links li { font-size: 14px; }
+    .footer-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #8aadcc;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .footer-links a:hover { color: var(--orange); gap: 12px; }
+    .footer-links a i { font-size: 10px; color: var(--orange); }
+    .footer-contact { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .footer-contact li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; }
+    .footer-contact i { color: var(--orange); font-size: 15px; margin-top: 2px; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 18px 0;
+      font-size: 13px;
+      text-align: center;
+      color: #5a7a9a;
+    }
+    .footer-bottom span { color: var(--orange); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    .modal-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .modal-header h3 { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+    .modal-header p { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .modal-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 26px;
+      cursor: pointer;
+      opacity: 0.7;
+      line-height: 1;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .modal-close:hover { opacity: 1; }
+    .modal-body { padding: 28px; display: flex; flex-direction: column; gap: 18px; }
+    .modal-field { display: flex; flex-direction: column; gap: 6px; }
+    .modal-field label { font-size: 13px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.5px; }
+    .modal-field input, .modal-field textarea, .modal-field select {
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--navy);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .modal-field input:focus, .modal-field textarea:focus { border-color: var(--orange); }
+    .modal-field textarea { resize: vertical; min-height: 90px; }
+    .type-toggle { display: flex; gap: 10px; }
+    .type-btn {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .type-btn.active { border-color: var(--orange); color: var(--orange); background: rgba(204,34,34,0.04); }
+    .service-section { display: none; }
+    .service-section.visible { display: flex; }
+    .service-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .service-pill {
+      padding: 6px 14px;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .service-pill.selected { border-color: var(--orange); color: var(--orange); background: rgba(204,34,34,0.06); }
+    .modal-submit {
+      background: var(--orange);
+      color: #fff;
+      border: 3px solid var(--orange);
+      border-radius: 8px;
+      padding: 13px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .modal-submit:hover { background: var(--orange2); border-color: var(--orange2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .service-layout { grid-template-columns: 1fr; }
+      .sidebar { order: -1; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .page-hero-icon { display: none; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .topbar .container { justify-content: center; }
+      .topbar-right { display: none; }
+      .nav-links { display: none; }
+      .page-hero { padding: 50px 0 40px; }
+      .service-content { padding: 40px 0; }
+      .emergency-block { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container">
+      <div style="display:flex;gap:20px;flex-wrap:wrap;">
+        <span><i class="fas fa-phone-alt"></i> <a href="tel:9254550720">(925) 455-0720</a></span>
+        <span><i class="fas fa-envelope"></i> <a href="mailto:sales@richcortezandsons.com">sales@richcortezandsons.com</a></span>
+        <span><i class="fas fa-clock"></i> Serving the Bay Area Since 1978</span>
+      </div>
+      <div class="topbar-right">
+        <span><i class="fas fa-map-marker-alt"></i> Livermore, CA — Bay Area</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-wrench"></i></div>
+        <div class="logo-text">
+          <strong>Rich Cortez &amp; Sons Inc.</strong>
+          <span>HVAC, Plumbing, Appliance Repair</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#residential">Residential</a></li>
+        <li><a href="index.html#commercial">Commercial</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#testimonials">Reviews</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-phone">
+          <i class="fas fa-phone-alt"></i>
+          <a href="tel:+19254550720">(925) 455-0720</a>
+        </div>
+        <button onclick="openQuoteModal()" class="btn btn-orange">Contact Us</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <i class="fas fa-fan page-hero-icon"></i>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <a href="index.html#services">Services</a>
+        <i class="fas fa-chevron-right"></i>
+        <span style="color:rgba(255,255,255,0.85);">Residential HVAC</span>
+      </div>
+      <div class="page-hero-badge">
+        <i class="fas fa-home"></i> Residential Service
+      </div>
+      <h1>Residential <span>HVAC</span> Services</h1>
+      <p>Reliable, high-quality heating and cooling solutions designed to keep your home comfortable year-round — honest work, clear communication, and dependable results.</p>
+      <div class="page-hero-ctas">
+        <button onclick="openQuoteModal('residential', 'HVAC')" class="btn btn-orange"><i class="fas fa-calendar-check"></i> Schedule Service</button>
+        <a href="tel:+19254550720" class="btn btn-navy"><i class="fas fa-phone-alt"></i> (925) 455-0720</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="service-content">
+    <div class="container">
+      <div class="service-layout">
+
+        <!-- LEFT: Main Content -->
+        <div class="service-main">
+
+          <p class="service-intro">
+            At Rich Cortez and Sons, we provide reliable, high-quality residential HVAC services designed to keep your home comfortable year-round. Whether you need a quick repair, a full system replacement, or routine maintenance, our team delivers honest work, clear communication, and dependable results across the Bay Area and Central Valley.
+          </p>
+
+          <!-- Service Area -->
+          <div class="service-area-block">
+            <h2><i class="fas fa-map-marker-alt"></i> Service Area</h2>
+            <p>We proudly serve homeowners throughout the region. If you're nearby and don't see your city listed, there's a good chance we still service your area — just reach out and ask.</p>
+            <div class="city-list">
+              <span>Manteca</span><span>Tracy</span><span>Mountain House</span><span>Lathrop</span>
+              <span>Livermore</span><span>Pleasanton</span><span>Dublin</span><span>San Ramon</span>
+              <span>Danville</span><span>Alamo</span><span>Walnut Creek</span><span>Concord</span>
+              <span>Brentwood</span><span>Antioch</span><span>Pittsburg</span><span>Oakley</span>
+              <span>Hayward</span><span>Castro Valley</span><span>San Leandro</span><span>Oakland</span>
+            </div>
+          </div>
+
+          <!-- Heating -->
+          <div class="service-block">
+            <div class="service-block-header">
+              <div class="service-block-icon"><i class="fas fa-fire"></i></div>
+              <h2>Heating Services</h2>
+            </div>
+            <p>When temperatures drop, your heating system needs to perform efficiently and safely. We service all major heating systems, including furnaces and heat pumps.</p>
+            <ul class="service-list">
+              <li>Furnace repair and troubleshooting</li>
+              <li>New furnace installation and system replacement</li>
+              <li>Heat pump installation and service</li>
+              <li>Seasonal tune-ups and safety inspections</li>
+              <li>Airflow and efficiency optimization</li>
+            </ul>
+          </div>
+
+          <!-- AC -->
+          <div class="service-block">
+            <div class="service-block-header">
+              <div class="service-block-icon"><i class="fas fa-snowflake"></i></div>
+              <h2>Air Conditioning Services</h2>
+            </div>
+            <p>Stay cool during the hot California months with expert AC services tailored to your home. We help improve performance, lower energy costs, and extend system life.</p>
+            <ul class="service-list">
+              <li>Air conditioning repair and diagnostics</li>
+              <li>New AC installation and system upgrades</li>
+              <li>Ductless mini-split systems</li>
+              <li>Refrigerant checks and system recharging</li>
+              <li>Preventative maintenance and tune-ups</li>
+            </ul>
+          </div>
+
+          <!-- Indoor Air Quality -->
+          <div class="service-block">
+            <div class="service-block-header">
+              <div class="service-block-icon"><i class="fas fa-wind"></i></div>
+              <h2>Indoor Air Quality</h2>
+            </div>
+            <p>Your comfort isn't just about temperature — it's about the air you breathe. We offer solutions that improve air quality and overall home health.</p>
+            <ul class="service-list">
+              <li>Whole-home air filtration systems</li>
+              <li>Air purifiers and UV light systems</li>
+              <li>Humidity control solutions</li>
+              <li>Duct cleaning and airflow improvements</li>
+            </ul>
+          </div>
+
+          <!-- Maintenance -->
+          <div class="service-block">
+            <div class="service-block-header">
+              <div class="service-block-icon"><i class="fas fa-tools"></i></div>
+              <h2>HVAC Maintenance</h2>
+            </div>
+            <p>Routine maintenance is the key to avoiding costly breakdowns and extending the life of your system. Our maintenance services keep everything running smoothly.</p>
+            <ul class="service-list">
+              <li>Seasonal system inspections</li>
+              <li>Filter replacement and cleaning</li>
+              <li>Performance testing and efficiency checks</li>
+              <li>Early problem detection and prevention</li>
+            </ul>
+          </div>
+
+          <!-- Installation & Replacement -->
+          <div class="service-block">
+            <div class="service-block-header">
+              <div class="service-block-icon"><i class="fas fa-cogs"></i></div>
+              <h2>System Installation &amp; Replacement</h2>
+            </div>
+            <p>Whether you're upgrading an outdated system or installing HVAC in a new home, we provide energy-efficient solutions customized to your space and budget.</p>
+            <ul class="service-list">
+              <li>Full system design and installation</li>
+              <li>Energy-efficient equipment upgrades</li>
+              <li>Smart thermostat installation</li>
+              <li>Ductwork design and modifications</li>
+            </ul>
+          </div>
+
+          <!-- Emergency -->
+          <div class="emergency-block">
+            <div class="emergency-block-icon"><i class="fas fa-bolt"></i></div>
+            <div>
+              <h2>Emergency Repairs</h2>
+              <p>HVAC problems don't always happen at convenient times. When your system fails, we respond quickly to restore comfort to your home. We take pride in delivering dependable service, fair pricing, and long-term solutions you can trust. No matter the size of the job, our goal is simple: keep your home comfortable and your system running at its best.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Sidebar -->
+        <aside class="sidebar">
+
+          <div class="sidebar-cta">
+            <h3>Ready to Schedule?</h3>
+            <p>Get a free quote from our team. We'll respond quickly and get the job done right.</p>
+            <button onclick="openQuoteModal('residential', 'HVAC')" class="btn">
+              <i class="fas fa-calendar-check"></i> Get a Free Quote
+            </button>
+          </div>
+
+          <div class="sidebar-contact">
+            <h4>Contact Us</h4>
+            <div class="sidebar-contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <div><a href="tel:+19254550720">(925) 455-0720</a></div>
+            </div>
+            <div class="sidebar-contact-item">
+              <i class="fas fa-envelope"></i>
+              <div><a href="mailto:sales@richcortezandsons.com">sales@richcortezandsons.com</a></div>
+            </div>
+            <div class="sidebar-contact-item">
+              <i class="fas fa-clock"></i>
+              <div>Mon – Sat: 8:00AM – 5:00PM</div>
+            </div>
+            <div class="sidebar-contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>Livermore, CA — Bay Area &amp; Central Valley</div>
+            </div>
+          </div>
+
+          <div class="sidebar-services">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="residential-hvac.html" class="current"><i class="fas fa-chevron-right"></i> Residential HVAC</a></li>
+              <li><a href="index.html#services"><i class="fas fa-chevron-right"></i> Residential Plumbing</a></li>
+              <li><a href="index.html#services"><i class="fas fa-chevron-right"></i> Appliance Repair</a></li>
+              <li><a href="commercial-hvac.html"><i class="fas fa-chevron-right"></i> Commercial HVAC</a></li>
+              <li><a href="commercial-plumbing.html"><i class="fas fa-chevron-right"></i> Commercial Plumbing</a></li>
+              <li><a href="solar-installation.html"><i class="fas fa-chevron-right"></i> Solar Installation</a></li>
+            </ul>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon"><i class="fas fa-wrench"></i></div>
+            <div class="logo-text">
+              <strong>Rich Cortez &amp; Sons Inc.</strong>
+              <span>HVAC, Plumbing, Appliance Repair</span>
+            </div>
+          </div>
+          <p>Proudly serving the Bay Area and Central Valley since 1978. We put our customers first — delivering first-class residential and commercial services with friendly, approachable expertise.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="index.html#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="index.html#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="index.html#testimonials"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+            <li><a href="index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Our Services</h5>
+          <ul class="footer-links">
+            <li><a href="residential-hvac.html"><i class="fas fa-chevron-right"></i> Residential HVAC</a></li>
+            <li><a href="index.html#services"><i class="fas fa-chevron-right"></i> Residential Plumbing</a></li>
+            <li><a href="index.html#services"><i class="fas fa-chevron-right"></i> Appliance Repair</a></li>
+            <li><a href="commercial-hvac.html"><i class="fas fa-chevron-right"></i> Commercial HVAC</a></li>
+            <li><a href="solar-installation.html"><i class="fas fa-chevron-right"></i> Solar Installation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact Us</h5>
+          <ul class="footer-contact">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Livermore, CA 94550<br>Serving the Greater Bay Area</span>
+            </li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <span><a href="tel:9254550720" style="color:#8aadcc;">(925) 455-0720</a></span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span><a href="mailto:sales@richcortezandsons.com" style="color:#8aadcc;">sales@richcortezandsons.com</a></span>
+            </li>
+            <li>
+              <i class="fas fa-clock"></i>
+              <span>Mon – Sat: 8:00AM – 5:00PM</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        &copy; 2025 <span>Rich Cortez &amp; Sons Inc.</span> All rights reserved. | Serving the Bay Area Since 1978 | Livermore, CA 94550
+      </div>
+    </div>
+  </footer>
+
+  <!-- QUOTE MODAL -->
+  <div class="modal-overlay" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <h3 id="quoteModalTitle"><i class="fas fa-clipboard-list"></i> Get a Free Quote</h3>
+          <p>Fill out the form and we'll get back to you shortly.</p>
+        </div>
+        <button class="modal-close" onclick="closeQuoteModal()" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-field">
+          <label for="q-name">Full Name *</label>
+          <input type="text" id="q-name" placeholder="John Smith" required />
+        </div>
+        <div class="modal-field">
+          <label for="q-phone">Phone Number *</label>
+          <input type="tel" id="q-phone" placeholder="(925) 555-0100" required />
+        </div>
+        <div class="modal-field">
+          <label for="q-email">Email Address</label>
+          <input type="email" id="q-email" placeholder="john@example.com" />
+        </div>
+        <div class="modal-field">
+          <label>Service Type *</label>
+          <div class="type-toggle">
+            <button class="type-btn" id="btn-residential" onclick="selectType('residential')">
+              <i class="fas fa-home"></i> Residential
+            </button>
+            <button class="type-btn" id="btn-commercial" onclick="selectType('commercial')">
+              <i class="fas fa-building"></i> Commercial
+            </button>
+          </div>
+        </div>
+        <div class="modal-field service-section" id="section-residential">
+          <label>Service Needed</label>
+          <div class="service-pills">
+            <span class="service-pill" onclick="togglePill(this)">HVAC</span>
+            <span class="service-pill" onclick="togglePill(this)">Plumbing</span>
+            <span class="service-pill" onclick="togglePill(this)">Appliance Repair</span>
+            <span class="service-pill" onclick="togglePill(this)">Solar Installation</span>
+            <span class="service-pill" onclick="togglePill(this)">Other</span>
+          </div>
+        </div>
+        <div class="modal-field service-section" id="section-commercial">
+          <label>Service Needed</label>
+          <div class="service-pills">
+            <span class="service-pill" onclick="togglePill(this)">Commercial HVAC</span>
+            <span class="service-pill" onclick="togglePill(this)">Commercial Plumbing</span>
+            <span class="service-pill" onclick="togglePill(this)">Other</span>
+          </div>
+        </div>
+        <div class="modal-field">
+          <label for="q-desc">Description</label>
+          <textarea id="q-desc" placeholder="Tell us what's going on — the more detail, the better!"></textarea>
+        </div>
+        <button class="modal-submit" onclick="submitQuote()">
+          <i class="fas fa-paper-plane"></i> Send My Request
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openQuoteModal(type, service) {
+      document.getElementById('quoteModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (type) selectType(type);
+      if (service) {
+        document.querySelectorAll('.service-pill').forEach(function(p) {
+          if (p.textContent.trim() === service) p.classList.add('selected');
+        });
+      }
+    }
+    function closeQuoteModal() {
+      document.getElementById('quoteModal').classList.remove('open');
+      document.body.style.overflow = '';
+      document.querySelectorAll('.service-pill.selected').forEach(function(p) { p.classList.remove('selected'); });
+    }
+    document.getElementById('quoteModal').addEventListener('click', function(e) {
+      if (e.target === this) closeQuoteModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeQuoteModal();
+    });
+    function selectType(type) {
+      document.getElementById('btn-residential').classList.toggle('active', type === 'residential');
+      document.getElementById('btn-commercial').classList.toggle('active', type === 'commercial');
+      document.getElementById('section-residential').classList.toggle('visible', type === 'residential');
+      document.getElementById('section-commercial').classList.toggle('visible', type === 'commercial');
+      document.querySelectorAll('.service-pill.selected').forEach(function(p) { p.classList.remove('selected'); });
+    }
+    function togglePill(el) {
+      var group = el.closest('.service-pills');
+      group.querySelectorAll('.service-pill').forEach(function(p) { p.classList.remove('selected'); });
+      el.classList.add('selected');
+    }
+    function submitQuote() {
+      var name  = document.getElementById('q-name').value.trim();
+      var phone = document.getElementById('q-phone').value.trim();
+      if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
+      var type = document.querySelector('.type-btn.active');
+      if (!type) { alert('Please select Residential or Commercial.'); return; }
+      var service = '';
+      var pill = document.querySelector('.service-pill.selected');
+      if (pill) service = pill.textContent;
+      var desc  = document.getElementById('q-desc').value.trim();
+      var email = document.getElementById('q-email').value.trim();
+      var subject = encodeURIComponent('Quote Request from ' + name);
+      var body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Phone: ' + phone + '\n' +
+        'Email: ' + (email || 'not provided') + '\n' +
+        'Type: ' + type.textContent.trim() + '\n' +
+        'Service: ' + (service || 'not selected') + '\n\n' +
+        'Description:\n' + (desc || 'none')
+      );
+      window.location.href = 'mailto:tannercortezofficial@gmail.com?subject=' + subject + '&body=' + body;
+      closeQuoteModal();
+    }
+  </script>
+
+  <script>
+  (function () {
+    var STAR_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53"><path d="M392.05 0c-20.9,210.08-184.06,378.41-392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93-210.06 184.09-378.37 392.05-407.74-207.98-29.38-371.16-197.69-392.06-407.78z"/></svg>';
+    function initBtn(btn) {
+      for (var i = 1; i <= 6; i++) {
+        var star = document.createElement('span');
+        star.className = 'btn-star btn-star-' + i;
+        star.innerHTML = STAR_SVG;
+        btn.appendChild(star);
+      }
+    }
+    function init() {
+      document.querySelectorAll('.btn:not(.modal-submit):not(.type-btn)').forEach(function(btn) {
+        if (!btn.querySelector('.btn-star')) initBtn(btn);
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+
+</body>
+</html>
