@@ -54,6 +54,77 @@
     .topbar i { color: var(--orange); font-size: 12px; }
     .topbar-right { display: flex; gap: 20px; align-items: center; }
     .topbar-social { display: flex; gap: 10px; }
+
+    /* ── QUICK LINKS DROPDOWN ── */
+    .quick-links {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .quick-links-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ccc;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+    .quick-links-btn:hover {
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.3);
+      color: #fff;
+    }
+    .quick-links-btn i { color: var(--orange); font-size: 11px; transition: transform 0.2s; }
+    .quick-links.open .quick-links-btn i.fa-chevron-down { transform: rotate(180deg); }
+    .quick-links-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      min-width: 210px;
+      z-index: 9999;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+    .quick-links.open .quick-links-menu { display: block; }
+    .quick-links-menu a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #ccc;
+      transition: background 0.15s, color 0.15s;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .quick-links-menu a:last-child { border-bottom: none; }
+    .quick-links-menu a:hover { background: rgba(255,255,255,0.07); color: #fff; }
+    .quick-links-menu a i { color: var(--orange); font-size: 12px; width: 14px; text-align: center; }
+    .quick-links-menu .ql-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 2px 0;
+    }
+    .quick-links-menu .ql-contact {
+      background: var(--orange);
+      color: #fff;
+      font-weight: 700;
+      justify-content: center;
+    }
+    .quick-links-menu .ql-contact:hover { background: var(--orange2); color: #fff; }
+    .quick-links-menu .ql-contact i { color: #fff; }
     .topbar-social a {
       width: 26px; height: 26px;
       border: 1px solid #444;
@@ -732,9 +803,10 @@
     .about-features li i { color: var(--orange); font-size: 16px; }
 
     /* ── SERVICES ── */
-    .services { background: var(--gray); }
+    .services { background: var(--navy); }
     .services .section-header { text-align: center; margin-bottom: 50px; }
-    .services .section-header .section-desc { margin: 0 auto; }
+    .services .section-header .section-title { color: #fff; }
+    .services .section-header .section-desc { margin: 0 auto; color: #8aadcc; }
     .services .section-header .divider { margin: 14px auto 0; }
     .services-grid {
       display: grid;
@@ -1748,7 +1820,26 @@
   <!-- TOP BAR -->
   <div class="topbar">
     <div class="container">
-      <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+
+        <!-- Quick Links Dropdown -->
+        <div class="quick-links" id="quickLinks">
+          <button class="quick-links-btn" onclick="toggleQuickLinks(event)" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-th-large"></i> Quick Links <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="quick-links-menu" role="menu">
+            <a href="index.html" role="menuitem"><i class="fas fa-home"></i> Home</a>
+            <a href="residential-hvac.html" role="menuitem"><i class="fas fa-snowflake"></i> Residential HVAC</a>
+            <a href="residential-plumbing.html" role="menuitem"><i class="fas fa-faucet"></i> Residential Plumbing</a>
+            <a href="appliance-repair.html" role="menuitem"><i class="fas fa-blender"></i> Appliance Repair</a>
+            <a href="commercial-hvac.html" role="menuitem"><i class="fas fa-building"></i> Commercial HVAC</a>
+            <a href="commercial-plumbing.html" role="menuitem"><i class="fas fa-wrench"></i> Commercial Plumbing</a>
+            <a href="solar-installation.html" role="menuitem"><i class="fas fa-solar-panel"></i> Solar Installation</a>
+            <div class="ql-divider"></div>
+            <a href="#" class="ql-contact" onclick="openQuoteModal();document.getElementById('quickLinks').classList.remove('open');return false;" role="menuitem"><i class="fas fa-envelope"></i> Contact Us</a>
+          </div>
+        </div>
+
         <span><i class="fas fa-phone-alt"></i> <a href="tel:9254550720">(925) 455-0720</a></span>
         <span><i class="fas fa-envelope"></i> <a href="mailto:sales@richcortezandsons.com">sales@richcortezandsons.com</a></span>
         <span><i class="fas fa-clock"></i> Serving the Bay Area Since 1978</span>
@@ -2248,65 +2339,6 @@
     </div>
   </section>
 
-  <!-- WHY CHOOSE US -->
-  <section class="why">
-    <div class="container">
-      <div class="why-content">
-        <p class="section-label"><i class="fas fa-award"></i> &nbsp;Why Choose Us</p>
-        <h2 class="section-title">Trusted By Bay Area<br>Families &amp; Businesses</h2>
-        <div class="divider"></div>
-        <p class="section-desc">We combine technical expertise with a friendly, approachable attitude and a genuine care for our customers — delivering first-class service since 1978.</p>
-        <ul class="why-list">
-          <li>
-            <div class="why-list-icon"><i class="fas fa-clock"></i></div>
-            <div>
-              <strong>Quick Turnaround</strong>
-              We get the job done efficiently so your home or business isn't disrupted for long.
-            </div>
-          </li>
-          <li>
-            <div class="why-list-icon"><i class="fas fa-award"></i></div>
-            <div>
-              <strong>Industry Leading Products</strong>
-              We source and install only quality, industry-leading appliances and parts.
-            </div>
-          </li>
-          <li>
-            <div class="why-list-icon"><i class="fas fa-heart"></i></div>
-            <div>
-              <strong>Customer-First Approach</strong>
-              We listen to you and help you find exactly what you need — no pressure, no upsells.
-            </div>
-          </li>
-          <li>
-            <div class="why-list-icon"><i class="fas fa-handshake"></i></div>
-            <div>
-              <strong>46+ Years of Trust</strong>
-              Serving the Bay Area since 1978 — a proven track record families rely on.
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="why-image">
-        <div class="why-img-wrap">🏆</div>
-        <div class="why-stats">
-          <div class="why-stat">
-            <strong>5K+</strong>
-            <span>Jobs Done</span>
-          </div>
-          <div class="why-stat">
-            <strong>46+</strong>
-            <span>Years</span>
-          </div>
-          <div class="why-stat">
-            <strong>4.9★</strong>
-            <span>Rating</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- PARTNERS -->
   <div class="partners">
     <div class="container">
@@ -2588,7 +2620,7 @@
             <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
             <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
             <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Reviews</a></li>
-            <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+            <li><a href="#" onclick="openQuoteModal();return false;"><i class="fas fa-chevron-right"></i> Contact</a></li>
           </ul>
         </div>
 
@@ -2596,11 +2628,12 @@
         <div class="footer-col">
           <h5>Our Services</h5>
           <ul class="footer-links">
-            <li><a href="#services"><i class="fas fa-chevron-right"></i> AC Installation</a></li>
-            <li><a href="#services"><i class="fas fa-chevron-right"></i> AC Repair</a></li>
-            <li><a href="#services"><i class="fas fa-chevron-right"></i> Plumbing</a></li>
-            <li><a href="#services"><i class="fas fa-chevron-right"></i> Drain Cleaning</a></li>
-            <li><a href="#services"><i class="fas fa-chevron-right"></i> Maintenance Plans</a></li>
+            <li><a href="residential-hvac.html"><i class="fas fa-chevron-right"></i> Residential HVAC</a></li>
+            <li><a href="residential-plumbing.html"><i class="fas fa-chevron-right"></i> Residential Plumbing</a></li>
+            <li><a href="appliance-repair.html"><i class="fas fa-chevron-right"></i> Appliance Repair</a></li>
+            <li><a href="commercial-hvac.html"><i class="fas fa-chevron-right"></i> Commercial HVAC</a></li>
+            <li><a href="commercial-plumbing.html"><i class="fas fa-chevron-right"></i> Commercial Plumbing</a></li>
+            <li><a href="solar-installation.html"><i class="fas fa-chevron-right"></i> Solar Installation</a></li>
           </ul>
         </div>
 
@@ -2709,6 +2742,22 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function toggleQuickLinks(e) {
+      e.stopPropagation();
+      var el = document.getElementById('quickLinks');
+      var isOpen = el.classList.toggle('open');
+      el.querySelector('.quick-links-btn').setAttribute('aria-expanded', isOpen);
+    }
+    document.addEventListener('click', function(e) {
+      var el = document.getElementById('quickLinks');
+      if (el && !el.contains(e.target)) {
+        el.classList.remove('open');
+        el.querySelector('.quick-links-btn').setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
 
   <script>
     function openQuoteModal(type, service) {

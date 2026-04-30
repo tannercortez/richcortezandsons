@@ -53,6 +53,77 @@
     .topbar i { color: var(--orange); font-size: 12px; }
     .topbar-right { display: flex; gap: 20px; align-items: center; }
 
+    /* ── QUICK LINKS DROPDOWN ── */
+    .quick-links {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .quick-links-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ccc;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+    .quick-links-btn:hover {
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.3);
+      color: #fff;
+    }
+    .quick-links-btn i { color: var(--orange); font-size: 11px; transition: transform 0.2s; }
+    .quick-links.open .quick-links-btn i.fa-chevron-down { transform: rotate(180deg); }
+    .quick-links-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      min-width: 210px;
+      z-index: 9999;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+    .quick-links.open .quick-links-menu { display: block; }
+    .quick-links-menu a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #ccc;
+      transition: background 0.15s, color 0.15s;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .quick-links-menu a:last-child { border-bottom: none; }
+    .quick-links-menu a:hover { background: rgba(255,255,255,0.07); color: #fff; }
+    .quick-links-menu a i { color: var(--orange); font-size: 12px; width: 14px; text-align: center; }
+    .quick-links-menu .ql-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 2px 0;
+    }
+    .quick-links-menu .ql-contact {
+      background: var(--orange);
+      color: #fff;
+      font-weight: 700;
+      justify-content: center;
+    }
+    .quick-links-menu .ql-contact:hover { background: var(--orange2); color: #fff; }
+    .quick-links-menu .ql-contact i { color: #fff; }
+
     /* ── NAVBAR ── */
     nav {
       background: var(--white);
@@ -674,7 +745,26 @@
   <!-- TOP BAR -->
   <div class="topbar">
     <div class="container">
-      <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+
+        <!-- Quick Links Dropdown -->
+        <div class="quick-links" id="quickLinks">
+          <button class="quick-links-btn" onclick="toggleQuickLinks(event)" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-th-large"></i> Quick Links <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="quick-links-menu" role="menu">
+            <a href="index.html" role="menuitem"><i class="fas fa-home"></i> Home</a>
+            <a href="residential-hvac.html" role="menuitem"><i class="fas fa-snowflake"></i> Residential HVAC</a>
+            <a href="residential-plumbing.html" role="menuitem"><i class="fas fa-faucet"></i> Residential Plumbing</a>
+            <a href="appliance-repair.html" role="menuitem"><i class="fas fa-blender"></i> Appliance Repair</a>
+            <a href="commercial-hvac.html" role="menuitem"><i class="fas fa-building"></i> Commercial HVAC</a>
+            <a href="commercial-plumbing.html" role="menuitem"><i class="fas fa-wrench"></i> Commercial Plumbing</a>
+            <a href="solar-installation.html" role="menuitem"><i class="fas fa-solar-panel"></i> Solar Installation</a>
+            <div class="ql-divider"></div>
+            <a href="#" class="ql-contact" onclick="openQuoteModal();document.getElementById('quickLinks').classList.remove('open');return false;" role="menuitem"><i class="fas fa-envelope"></i> Contact Us</a>
+          </div>
+        </div>
+
         <span><i class="fas fa-phone-alt"></i> <a href="tel:9254550720">(925) 455-0720</a></span>
         <span><i class="fas fa-envelope"></i> <a href="mailto:sales@richcortezandsons.com">sales@richcortezandsons.com</a></span>
         <span><i class="fas fa-clock"></i> Serving the Bay Area Since 1978</span>
@@ -1047,6 +1137,22 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function toggleQuickLinks(e) {
+      e.stopPropagation();
+      var el = document.getElementById('quickLinks');
+      var isOpen = el.classList.toggle('open');
+      el.querySelector('.quick-links-btn').setAttribute('aria-expanded', isOpen);
+    }
+    document.addEventListener('click', function(e) {
+      var el = document.getElementById('quickLinks');
+      if (el && !el.contains(e.target)) {
+        el.classList.remove('open');
+        el.querySelector('.quick-links-btn').setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
 
   <script>
     function openQuoteModal(type, service) {
