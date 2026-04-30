@@ -1094,8 +1094,16 @@
     }
     @media (max-width: 600px) {
       .testimonial-card { flex: 0 0 100%; }
-      .carousel-arrow.prev { left: 0; }
-      .carousel-arrow.next { right: 0; }
+      .carousel-outer {
+        display: grid;
+        grid-template-areas: "viewport viewport" "prev next";
+        grid-template-columns: 1fr 1fr;
+        row-gap: 20px;
+      }
+      .carousel-viewport { grid-area: viewport; }
+      .carousel-arrow { position: static; transform: none; }
+      .carousel-arrow.prev { grid-area: prev; justify-self: end; margin-right: 12px; }
+      .carousel-arrow.next { grid-area: next; justify-self: start; margin-left: 12px; }
     }
 
     /* ── CTA BANNER ── */
@@ -1210,6 +1218,7 @@
       .services-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .about-features { grid-template-columns: 1fr; }
+      .about-content > .btn { display: block; width: fit-content; margin: 0 auto; }
       .footer-grid { grid-template-columns: 1fr; }
       .why-stats { grid-template-columns: 1fr 1fr; }
 
@@ -1264,6 +1273,7 @@
       .service-strip .container { grid-template-columns: 1fr; }
       .hero h1 { font-size: 32px; }
       .cta-banner .container { flex-direction: column; text-align: center; }
+      .cta-actions { justify-content: center; }
       /* Extra tightening for small phones */
       .hero-content--centered .hero-sub { font-size: 12px; margin-bottom: 10px; }
       .hero-phone { margin-bottom: 12px; gap: 8px; }
@@ -2589,7 +2599,7 @@
         <h2>Ready To Get Started? Call Us Now!</h2>
         <p>Serving the Bay Area since 1978. Friendly service, industry-leading products, quick turnaround.</p>
       </div>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+      <div class="cta-actions" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
         <a href="tel:9254550720" class="btn btn-white"><i class="fas fa-phone-alt"></i> (925) 455-0720</a>
         <button onclick="openQuoteModal()" class="btn btn-navy"><i class="fas fa-envelope"></i> Email Us</button>
       </div>
