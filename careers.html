@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solar Installation Services | Rich Cortez & Sons Inc.</title>
+  <title>Careers | Rich Cortez &amp; Sons Inc.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -197,6 +197,7 @@
     .btn-star { position: absolute; pointer-events: none; z-index: 2; opacity: 0; }
     .btn-star svg { width: 100%; height: auto; display: block; }
     .btn:hover .btn-star { opacity: 1; }
+
     .btn-star-1 { top: 20%; left: 20%; width: 25px; transition: top 1000ms cubic-bezier(0.05,0.83,0.43,0.96), left 1000ms cubic-bezier(0.05,0.83,0.43,0.96), filter 1000ms, opacity 200ms; }
     .btn-star-2 { top: 45%; left: 45%; width: 15px; transition: top 1000ms cubic-bezier(0,0.4,0,1.01), left 1000ms cubic-bezier(0,0.4,0,1.01), filter 1000ms, opacity 200ms; }
     .btn-star-3 { top: 40%; left: 40%; width: 5px; transition: top 1000ms cubic-bezier(0,0.4,0,1.01), left 1000ms cubic-bezier(0,0.4,0,1.01), filter 1000ms, opacity 200ms; }
@@ -297,9 +298,69 @@
       color: var(--text);
       line-height: 1.8;
       margin-bottom: 48px;
+      background: var(--gray);
+      border-radius: 14px;
+      padding: 28px 32px;
+      border-left: 4px solid var(--orange);
     }
 
-    .service-block { margin-bottom: 48px; }
+    /* ── CAREERS: Benefits ── */
+    .careers-section { margin-bottom: 48px; }
+    .careers-section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--gray);
+    }
+    .careers-section-icon {
+      width: 48px; height: 48px;
+      background: var(--orange);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .careers-section-header h2 { font-size: 22px; font-weight: 800; color: var(--navy); }
+    .careers-section-header p { font-size: 14px; color: var(--text); margin-top: 3px; }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .benefit-card {
+      background: var(--gray);
+      border-radius: 12px;
+      padding: 22px 20px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      transition: box-shadow 0.2s;
+    }
+    .benefit-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .benefit-icon {
+      width: 42px; height: 42px;
+      background: var(--orange);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+    .benefit-card h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .benefit-card p { font-size: 13px; color: var(--text); line-height: 1.6; margin: 0; }
+
+    /* ── CAREERS: Positions ── */
+    .service-block { margin-bottom: 40px; }
     .service-block-header {
       display: flex;
       align-items: center;
@@ -337,6 +398,7 @@
       flex-shrink: 0;
     }
 
+    /* ── CAREERS: Service Area ── */
     .service-area-block {
       background: var(--gray);
       border-radius: 14px;
@@ -366,27 +428,59 @@
       font-weight: 500;
     }
 
-    .closing-block {
+    /* ── CAREERS: Who We're Looking For ── */
+    .looking-for-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 0;
+    }
+    .looking-for-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      background: var(--gray);
+      border-radius: 9px;
+      padding: 13px 16px;
+      font-size: 14px;
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .looking-for-item i { color: var(--orange); font-size: 15px; flex-shrink: 0; }
+
+    /* ── CAREERS: Apply CTA ── */
+    .apply-cta-block {
       background: linear-gradient(135deg, var(--navy2), var(--navy));
       border-radius: 14px;
-      padding: 30px 32px;
+      padding: 40px 36px;
       color: #fff;
-      margin-bottom: 48px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    .apply-cta-block h2 {
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+    .apply-cta-block p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .apply-cta-block .cta-btns {
       display: flex;
-      align-items: flex-start;
-      gap: 20px;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-    .closing-block-icon {
-      width: 52px; height: 52px;
-      background: var(--orange);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-      flex-shrink: 0;
-    }
-    .closing-block h2 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .closing-block p { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.65; }
 
+    /* ── SIDEBAR ── */
     .sidebar { display: flex; flex-direction: column; gap: 24px; }
     .sidebar-cta {
       background: var(--orange);
@@ -453,8 +547,8 @@
     .sidebar-services li:last-child a { border-bottom: none; }
     .sidebar-services li a:hover { color: var(--orange); gap: 14px; }
     .sidebar-services li a i { color: var(--orange); font-size: 12px; }
-    .sidebar-services li a.current { color: var(--orange); font-weight: 700; }
 
+    /* ── FOOTER ── */
     footer { background: var(--navy2); color: #8aadcc; padding: 60px 0 0; }
     .footer-grid {
       display: grid;
@@ -492,6 +586,7 @@
     }
     .footer-bottom span { color: var(--orange); }
 
+    /* ── MODAL ── */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -550,6 +645,7 @@
     }
     .modal-submit:hover { background: var(--orange2); border-color: var(--orange2); }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .service-layout { grid-template-columns: 1fr; }
       .sidebar { order: -1; }
@@ -567,7 +663,11 @@
       .nav-right { flex-direction: column; align-items: flex-end; gap: 6px; }
       .page-hero { padding: 50px 0 40px; }
       .service-content { padding: 40px 0; }
-      .closing-block { flex-direction: column; }
+      .service-intro { padding: 20px 22px; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .looking-for-grid { grid-template-columns: 1fr; }
+      .apply-cta-block { padding: 28px 22px; }
+      .service-area-block { padding: 22px 20px; }
     }
   </style>
 </head>
@@ -637,22 +737,20 @@
 
   <!-- PAGE HERO -->
   <section class="page-hero">
-    <i class="fas fa-solar-panel page-hero-icon"></i>
+    <i class="fas fa-briefcase page-hero-icon"></i>
     <div class="container">
       <div class="breadcrumb">
         <a href="index.html">Home</a>
         <i class="fas fa-chevron-right"></i>
-        <a href="index.html#services">Services</a>
-        <i class="fas fa-chevron-right"></i>
-        <span style="color:rgba(255,255,255,0.85);">Solar Installation</span>
+        <span style="color:rgba(255,255,255,0.85);">Careers</span>
       </div>
       <div class="page-hero-badge">
-        <i class="fas fa-solar-panel"></i> Residential &amp; Commercial
+        <i class="fas fa-hard-hat"></i> Now Hiring
       </div>
-      <h1>Solar <span>Installation</span> Services</h1>
-      <p>Professional solar installation for homes and businesses across the Bay Area and Central Valley — from custom system design to final activation, we deliver clean energy solutions built to last.</p>
+      <h1>Build Your <span>Career</span> With Us</h1>
+      <p>At Rich Cortez and Sons, we're building a team of hardworking, reliable professionals who take pride in their craft. Whether you're experienced or just getting started, we offer real opportunities to grow in the trades.</p>
       <div class="page-hero-ctas">
-        <button onclick="openQuoteModal('residential', 'Solar Installation')" class="btn btn-orange"><i class="fas fa-calendar-check"></i> Schedule Service</button>
+        <a href="mailto:tannercortezofficial@gmail.com?subject=Job%20Application%20%E2%80%94%20Rich%20Cortez%20%26%20Sons" class="btn btn-orange"><i class="fas fa-paper-plane"></i> Apply Now</a>
         <a href="tel:+19254550720" class="btn btn-navy"><i class="fas fa-phone-alt"></i> (925) 455-0720</a>
       </div>
     </div>
@@ -667,13 +765,151 @@
         <div class="service-main">
 
           <p class="service-intro">
-            At Rich Cortez and Sons, we provide professional, high-quality solar installation services designed to help homeowners and businesses reduce energy costs and gain energy independence. From initial consultation to final installation, our team delivers efficient, reliable solar solutions tailored to your property across the Bay Area and Central Valley.
+            Looking for more than just a job? At Rich Cortez and Sons, we're building a team of hardworking, reliable professionals who take pride in their craft and want to grow in the trades. We offer real opportunities to build a long-term career in a company that values quality work, integrity, and strong teamwork.
           </p>
+
+          <!-- Why Work With Us -->
+          <div class="careers-section">
+            <div class="careers-section-header">
+              <div class="careers-section-icon"><i class="fas fa-star"></i></div>
+              <div>
+                <h2>Why Work With Us?</h2>
+                <p>We believe that great service starts with great people.</p>
+              </div>
+            </div>
+            <div class="benefits-grid">
+              <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-calendar-check"></i></div>
+                <div>
+                  <h3>Consistent Work Opportunities</h3>
+                  <p>Steady demand across residential and commercial services keeps you working year-round.</p>
+                </div>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-dollar-sign"></i></div>
+                <div>
+                  <h3>Competitive Pay</h3>
+                  <p>Earn based on your skills, experience, and performance — your work is valued here.</p>
+                </div>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                <div>
+                  <h3>Growth &amp; Advancement</h3>
+                  <p>Opportunities to expand your skills and move up within the company over time.</p>
+                </div>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-hammer"></i></div>
+                <div>
+                  <h3>Hands-On Experience</h3>
+                  <p>Work on a wide range of real-world residential and commercial projects every day.</p>
+                </div>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                <div>
+                  <h3>Supportive Team Environment</h3>
+                  <p>Work alongside people who take pride in what they do and support each other.</p>
+                </div>
+              </div>
+              <div class="benefit-card">
+                <div class="benefit-icon"><i class="fas fa-handshake"></i></div>
+                <div>
+                  <h3>Reliable Leadership</h3>
+                  <p>Clear communication, fair expectations, and honest management from day one.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Positions We Offer -->
+          <div class="careers-section">
+            <div class="careers-section-header">
+              <div class="careers-section-icon"><i class="fas fa-hard-hat"></i></div>
+              <div>
+                <h2>Positions We Offer</h2>
+                <p>We're always looking for motivated individuals in the following areas.</p>
+              </div>
+            </div>
+
+            <div class="service-block">
+              <div class="service-block-header">
+                <div class="service-block-icon"><i class="fas fa-snowflake"></i></div>
+                <h2>Residential HVAC</h2>
+              </div>
+              <ul class="service-list">
+                <li>System installation, maintenance, and repair</li>
+                <li>Troubleshooting heating and cooling systems</li>
+                <li>Customer-focused residential service</li>
+              </ul>
+            </div>
+
+            <div class="service-block">
+              <div class="service-block-header">
+                <div class="service-block-icon"><i class="fas fa-faucet"></i></div>
+                <h2>Residential Plumbing</h2>
+              </div>
+              <ul class="service-list">
+                <li>General plumbing repairs and installations</li>
+                <li>Leak detection and pipe work</li>
+                <li>Fixture installation and maintenance</li>
+              </ul>
+            </div>
+
+            <div class="service-block">
+              <div class="service-block-header">
+                <div class="service-block-icon"><i class="fas fa-blender"></i></div>
+                <h2>Appliance Repair</h2>
+              </div>
+              <ul class="service-list">
+                <li>Diagnosing and repairing household appliances</li>
+                <li>Working on refrigerators, washers, dryers, ovens, and more</li>
+                <li>Providing efficient, reliable service to homeowners</li>
+              </ul>
+            </div>
+
+            <div class="service-block">
+              <div class="service-block-header">
+                <div class="service-block-icon"><i class="fas fa-building"></i></div>
+                <h2>Commercial HVAC</h2>
+              </div>
+              <ul class="service-list">
+                <li>Installation and service of commercial systems</li>
+                <li>Rooftop units, split systems, and large-scale equipment</li>
+                <li>Preventative maintenance and system diagnostics</li>
+              </ul>
+            </div>
+
+            <div class="service-block">
+              <div class="service-block-header">
+                <div class="service-block-icon"><i class="fas fa-wrench"></i></div>
+                <h2>Commercial Plumbing</h2>
+              </div>
+              <ul class="service-list">
+                <li>Plumbing systems for commercial properties</li>
+                <li>Drain, sewer, and water line services</li>
+                <li>Fixture installation and compliance work</li>
+              </ul>
+            </div>
+
+            <div class="service-block">
+              <div class="service-block-header">
+                <div class="service-block-icon"><i class="fas fa-solar-panel"></i></div>
+                <h2>Solar Installation</h2>
+              </div>
+              <ul class="service-list">
+                <li>Solar panel system installation</li>
+                <li>Battery storage and system upgrades</li>
+                <li>Working with energy-efficient technologies</li>
+              </ul>
+            </div>
+          </div>
 
           <!-- Service Area -->
           <div class="service-area-block">
             <h2><i class="fas fa-map-marker-alt"></i> Service Area</h2>
-            <p>We proudly serve customers throughout the region. If your property is nearby and not listed, feel free to reach out — there's a good chance we can still service your area.</p>
+            <p>Our team serves customers across a wide region. You'll be working in communities throughout the Bay Area and Central Valley.</p>
             <div class="city-list">
               <span>Manteca</span><span>Tracy</span><span>Mountain House</span><span>Lathrop</span>
               <span>Livermore</span><span>Pleasanton</span><span>Dublin</span><span>San Ramon</span>
@@ -685,133 +921,32 @@
             </div>
           </div>
 
-          <!-- Solar System Design & Consultation -->
-          <div class="service-block">
-            <div class="service-block-header">
-              <div class="service-block-icon"><i class="fas fa-drafting-compass"></i></div>
-              <h2>Solar System Design &amp; Consultation</h2>
+          <!-- Who We're Looking For -->
+          <div class="careers-section">
+            <div class="careers-section-header">
+              <div class="careers-section-icon"><i class="fas fa-user-check"></i></div>
+              <div>
+                <h2>Who We're Looking For</h2>
+                <p>We're looking for individuals who bring the right attitude and work ethic.</p>
+              </div>
             </div>
-            <p>Every property is different, which is why we design custom solar systems based on your energy usage, roof layout, and long-term goals.</p>
-            <ul class="service-list">
-              <li>Energy usage analysis</li>
-              <li>Custom solar system design</li>
-              <li>Roof evaluation and shading analysis</li>
-              <li>System sizing for maximum efficiency</li>
-              <li>Transparent cost and savings estimates</li>
-            </ul>
+            <div class="looking-for-grid">
+              <div class="looking-for-item"><i class="fas fa-check-circle"></i> Take pride in their work</div>
+              <div class="looking-for-item"><i class="fas fa-check-circle"></i> Show up on time and stay reliable</div>
+              <div class="looking-for-item"><i class="fas fa-check-circle"></i> Have a strong work ethic</div>
+              <div class="looking-for-item"><i class="fas fa-check-circle"></i> Are willing to learn and improve</div>
+              <div class="looking-for-item"><i class="fas fa-check-circle"></i> Communicate well with customers and teammates</div>
+              <div class="looking-for-item"><i class="fas fa-check-circle"></i> Want to build a long-term career in the trades</div>
+            </div>
           </div>
 
-          <!-- Solar Panel Installation -->
-          <div class="service-block">
-            <div class="service-block-header">
-              <div class="service-block-icon"><i class="fas fa-solar-panel"></i></div>
-              <h2>Solar Panel Installation</h2>
-            </div>
-            <p>Our team installs high-quality solar panel systems with precision and attention to detail to ensure long-term performance.</p>
-            <ul class="service-list">
-              <li>Residential and commercial solar panel installation</li>
-              <li>Roof-mounted and ground-mounted systems</li>
-              <li>Code-compliant and permit-ready installations</li>
-              <li>Safe and efficient project completion</li>
-            </ul>
-          </div>
-
-          <!-- Battery Storage Solutions -->
-          <div class="service-block">
-            <div class="service-block-header">
-              <div class="service-block-icon"><i class="fas fa-battery-full"></i></div>
-              <h2>Battery Storage Solutions</h2>
-            </div>
-            <p>Store excess energy and keep your property powered even during outages.</p>
-            <ul class="service-list">
-              <li>Home and commercial battery installation</li>
-              <li>Backup power system setup</li>
-              <li>Energy storage optimization</li>
-              <li>Integration with existing solar systems</li>
-            </ul>
-          </div>
-
-          <!-- Solar Inverter Services -->
-          <div class="service-block">
-            <div class="service-block-header">
-              <div class="service-block-icon"><i class="fas fa-plug"></i></div>
-              <h2>Solar Inverter Services</h2>
-            </div>
-            <p>Inverters are the heart of your solar system. We install and service reliable inverter systems to ensure maximum performance.</p>
-            <ul class="service-list">
-              <li>Inverter installation and replacement</li>
-              <li>System monitoring setup</li>
-              <li>Performance optimization</li>
-              <li>Troubleshooting and repairs</li>
-            </ul>
-          </div>
-
-          <!-- Solar Maintenance & Repairs -->
-          <div class="service-block">
-            <div class="service-block-header">
-              <div class="service-block-icon"><i class="fas fa-tools"></i></div>
-              <h2>Solar Maintenance &amp; Repairs</h2>
-            </div>
-            <p>Keep your system running efficiently with ongoing maintenance and support.</p>
-            <ul class="service-list">
-              <li>System inspections and performance checks</li>
-              <li>Panel cleaning recommendations</li>
-              <li>Troubleshooting and repair services</li>
-              <li>Monitoring system diagnostics</li>
-            </ul>
-          </div>
-
-          <!-- System Upgrades & Expansion -->
-          <div class="service-block">
-            <div class="service-block-header">
-              <div class="service-block-icon"><i class="fas fa-expand-arrows-alt"></i></div>
-              <h2>System Upgrades &amp; Expansion</h2>
-            </div>
-            <p>Already have solar? We can help you expand or upgrade your system as your energy needs grow.</p>
-            <ul class="service-list">
-              <li>Adding additional panels</li>
-              <li>Battery system upgrades</li>
-              <li>Inverter upgrades</li>
-              <li>System efficiency improvements</li>
-            </ul>
-          </div>
-
-          <!-- Permitting & Utility Coordination -->
-          <div class="service-block">
-            <div class="service-block-header">
-              <div class="service-block-icon"><i class="fas fa-file-alt"></i></div>
-              <h2>Permitting &amp; Utility Coordination</h2>
-            </div>
-            <p>We handle the technical and administrative side so you don't have to.</p>
-            <ul class="service-list">
-              <li>Permit processing and approvals</li>
-              <li>Utility interconnection coordination</li>
-              <li>Code compliance and inspections</li>
-              <li>Final system activation</li>
-            </ul>
-          </div>
-
-          <!-- Energy Efficiency Solutions -->
-          <div class="service-block">
-            <div class="service-block-header">
-              <div class="service-block-icon"><i class="fas fa-leaf"></i></div>
-              <h2>Energy Efficiency Solutions</h2>
-            </div>
-            <p>Maximize your savings by pairing solar with energy-efficient upgrades.</p>
-            <ul class="service-list">
-              <li>Smart thermostat installation</li>
-              <li>Electrical panel upgrades</li>
-              <li>EV charger installation</li>
-              <li>Energy usage optimization</li>
-            </ul>
-          </div>
-
-          <!-- Closing Block -->
-          <div class="closing-block">
-            <div class="closing-block-icon"><i class="fas fa-sun"></i></div>
-            <div>
-              <h2>Our Commitment to Clean Energy</h2>
-              <p>We take pride in delivering dependable solar solutions, honest pricing, and long-term value. Our goal is simple: help you take control of your energy costs while powering your property with clean, renewable energy.</p>
+          <!-- Apply Today CTA -->
+          <div class="apply-cta-block">
+            <h2>Apply Today</h2>
+            <p>If you're ready to grow your skills, work with a solid team, and be part of a company that values what you bring to the table, we'd like to hear from you. Submit your application today and take the next step in your career with Rich Cortez and Sons.</p>
+            <div class="cta-btns">
+              <a href="mailto:tannercortezofficial@gmail.com?subject=Job%20Application%20%E2%80%94%20Rich%20Cortez%20%26%20Sons" class="btn btn-orange"><i class="fas fa-paper-plane"></i> Submit Application</a>
+              <a href="tel:+19254550720" class="btn btn-navy"><i class="fas fa-phone-alt"></i> (925) 455-0720</a>
             </div>
           </div>
 
@@ -821,11 +956,11 @@
         <aside class="sidebar">
 
           <div class="sidebar-cta">
-            <h3>Ready to Go Solar?</h3>
-            <p>Get a free quote from our team. We'll respond quickly and get the job done right.</p>
-            <button onclick="openQuoteModal('residential', 'Solar Installation')" class="btn">
-              <i class="fas fa-calendar-check"></i> Get a Free Quote
-            </button>
+            <h3>Ready to Apply?</h3>
+            <p>Send us your information and we'll be in touch about available positions on our team.</p>
+            <a href="mailto:tannercortezofficial@gmail.com?subject=Job%20Application%20%E2%80%94%20Rich%20Cortez%20%26%20Sons" class="btn">
+              <i class="fas fa-paper-plane"></i> Apply Now
+            </a>
           </div>
 
           <div class="sidebar-contact">
@@ -856,7 +991,7 @@
               <li><a href="appliance-repair.html"><i class="fas fa-chevron-right"></i> Appliance Repair</a></li>
               <li><a href="commercial-hvac.html"><i class="fas fa-chevron-right"></i> Commercial HVAC</a></li>
               <li><a href="commercial-plumbing.html"><i class="fas fa-chevron-right"></i> Commercial Plumbing</a></li>
-              <li><a href="solar-installation.html" class="current"><i class="fas fa-chevron-right"></i> Solar Installation</a></li>
+              <li><a href="solar-installation.html"><i class="fas fa-chevron-right"></i> Solar Installation</a></li>
             </ul>
           </div>
 
@@ -887,6 +1022,7 @@
             <li><a href="index.html#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
             <li><a href="index.html#services"><i class="fas fa-chevron-right"></i> Services</a></li>
             <li><a href="index.html#testimonials"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+            <li><a href="careers.html"><i class="fas fa-chevron-right"></i> Careers</a></li>
             <li><a href="index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
           </ul>
         </div>
@@ -1029,22 +1165,68 @@
     document.getElementById('quoteModal').addEventListener('click', function(e) {
       if (e.target === this) closeQuoteModal();
     });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeQuoteModal();
+    });
     function selectType(type) {
-      document.querySelectorAll('.type-btn').forEach(function(b) { b.classList.remove('active'); });
-      document.querySelectorAll('.service-section').forEach(function(s) { s.classList.remove('visible'); });
-      document.getElementById('btn-' + type).classList.add('active');
-      document.getElementById('section-' + type).classList.add('visible');
+      document.getElementById('btn-residential').classList.toggle('active', type === 'residential');
+      document.getElementById('btn-commercial').classList.toggle('active', type === 'commercial');
+      document.getElementById('section-residential').classList.toggle('visible', type === 'residential');
+      document.getElementById('section-commercial').classList.toggle('visible', type === 'commercial');
+      document.querySelectorAll('.service-pill.selected').forEach(function(p) { p.classList.remove('selected'); });
     }
     function togglePill(el) {
-      el.classList.toggle('selected');
+      var group = el.closest('.service-pills');
+      group.querySelectorAll('.service-pill').forEach(function(p) { p.classList.remove('selected'); });
+      el.classList.add('selected');
     }
     function submitQuote() {
-      var name = document.getElementById('q-name').value.trim();
+      var name  = document.getElementById('q-name').value.trim();
       var phone = document.getElementById('q-phone').value.trim();
-      if (!name || !phone) { alert('Please provide your name and phone number.'); return; }
+      if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
+      var type = document.querySelector('.type-btn.active');
+      if (!type) { alert('Please select Residential or Commercial.'); return; }
+      var service = '';
+      var pill = document.querySelector('.service-pill.selected');
+      if (pill) service = pill.textContent;
+      var desc  = document.getElementById('q-desc').value.trim();
+      var email = document.getElementById('q-email').value.trim();
+      var subject = encodeURIComponent('Quote Request from ' + name);
+      var body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Phone: ' + phone + '\n' +
+        'Email: ' + (email || 'not provided') + '\n' +
+        'Type: ' + type.textContent.trim() + '\n' +
+        'Service: ' + (service || 'not selected') + '\n\n' +
+        'Description:\n' + (desc || 'none')
+      );
+      window.location.href = 'mailto:tannercortezofficial@gmail.com?subject=' + subject + '&body=' + body;
       closeQuoteModal();
-      alert('Thank you, ' + name + '! We\'ll be in touch shortly.');
     }
+  </script>
+
+  <script>
+  (function () {
+    var STAR_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53"><path d="M392.05 0c-20.9,210.08-184.06,378.41-392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93-210.06 184.09-378.37 392.05-407.74-207.98-29.38-371.16-197.69-392.06-407.78z"/></svg>';
+    function initBtn(btn) {
+      for (var i = 1; i <= 6; i++) {
+        var star = document.createElement('span');
+        star.className = 'btn-star btn-star-' + i;
+        star.innerHTML = STAR_SVG;
+        btn.appendChild(star);
+      }
+    }
+    function init() {
+      document.querySelectorAll('.btn:not(.modal-submit):not(.type-btn)').forEach(function(btn) {
+        if (!btn.querySelector('.btn-star')) initBtn(btn);
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
   </script>
 
 </body>
