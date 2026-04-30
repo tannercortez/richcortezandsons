@@ -398,6 +398,34 @@
       flex-shrink: 0;
     }
 
+    /* ── CAREERS: Positions Header ── */
+    .positions-header {
+      background: linear-gradient(135deg, var(--navy2), var(--navy));
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .positions-header-icon {
+      width: 56px; height: 56px;
+      background: var(--orange);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .positions-header h2 {
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+    .positions-header p { color: rgba(255,255,255,0.65); font-size: 14px; margin: 0; }
+
     /* ── CAREERS: Service Area ── */
     .service-area-block {
       background: var(--gray);
@@ -825,8 +853,8 @@
 
           <!-- Positions We Offer -->
           <div class="careers-section">
-            <div class="careers-section-header">
-              <div class="careers-section-icon"><i class="fas fa-hard-hat"></i></div>
+            <div class="positions-header">
+              <div class="positions-header-icon"><i class="fas fa-hard-hat"></i></div>
               <div>
                 <h2>Positions We Offer</h2>
                 <p>We're always looking for motivated individuals in the following areas.</p>
