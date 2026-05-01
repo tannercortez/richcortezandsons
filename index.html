@@ -862,6 +862,11 @@
       font-weight: 700;
       color: var(--orange);
     }
+    .service-card-link::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
     .service-card-link:hover { gap: 10px; }
 
     /* ── WHY CHOOSE US ── */
@@ -1371,8 +1376,8 @@
       transition: font-size 0.25s, background 0.25s, padding 0.25s, border-radius 0.25s;
       border-radius: 8px;
     }
-    .choice-card:hover h3 { font-size: 30px; }
-    .choice-card:hover p  { font-size: 16px; }
+    .choice-card:hover h3 { }
+    .choice-card:hover p  { }
     .choice-card .choice-arrow {
       margin-top: 8px;
       display: inline-flex;
@@ -1561,7 +1566,7 @@
       background: var(--orange);
       color: #fff;
     }
-    .sector-card:hover { transform: translateY(-6px); box-shadow: 0 16px 44px rgba(0,0,0,0.13); border-color: var(--orange); }
+    .sector-card:hover { box-shadow: 0 16px 44px rgba(0,0,0,0.13); border-color: var(--orange); }
 
     /* Photo background sector cards */
     .sector-card--hvac,
@@ -1648,19 +1653,24 @@
       font-weight: 800;
       color: var(--navy);
       margin-bottom: 12px;
-      transition: font-size 0.25s, background 0.25s, padding 0.25s, border-radius 0.25s;
+      transition: background 0.25s, color 0.25s;
       border-radius: 8px;
+      padding: 6px 18px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
     }
+    .sector-card--appliance h3, .sector-card--solar h3 { padding: 6px 14px; }
     .sector-card p {
       font-size: 14px;
       color: var(--text);
       line-height: 1.7;
-      transition: font-size 0.25s, background 0.25s, padding 0.25s, border-radius 0.25s;
+      transition: background 0.25s, color 0.25s;
       border-radius: 8px;
+      padding: 5px 12px;
     }
-    .sector-card:hover h3 { font-size: 23px; background: #cc2222; color: #fff; padding: 6px 18px; width: fit-content; margin: 0 auto; }
-    .sector-card--appliance:hover h3, .sector-card--solar:hover h3 { font-size: 17px; padding: 6px 14px; }
-    .sector-card:hover p  { font-size: 16px; display: inline; background: #cc2222; color: #fff; padding: 5px 12px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+    .sector-card:hover h3 { background: #cc2222; color: #fff; }
+    .sector-card:hover p  { background: #cc2222; color: #fff; }
     .sector-cta {
       text-align: center;
       margin-top: 44px;
