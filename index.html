@@ -2855,7 +2855,7 @@
         'Service: ' + (service || 'not selected') + '\n\n' +
         'Description:\n' + (desc || 'none')
       );
-      window.location.href = 'mailto:sales@richcortezandsons.com?subject=' + subject + '&body=' + body;
+      window.open('https://mail.google.com/mail/?view=cm&to=sales@richcortezandsons.com&su=' + subject + '&body=' + body, '_blank', 'noopener');
       closeQuoteModal();
     }
   </script>
