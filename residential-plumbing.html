@@ -1206,17 +1206,29 @@
       if (pill) service = pill.textContent;
       var desc  = document.getElementById('q-desc').value.trim();
       var email = document.getElementById('q-email').value.trim();
-      var subject = encodeURIComponent('Quote Request from ' + name);
-      var body = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Phone: ' + phone + '\n' +
-        'Email: ' + (email || 'not provided') + '\n' +
-        'Type: ' + type.textContent.trim() + '\n' +
-        'Service: ' + (service || 'not selected') + '\n\n' +
-        'Description:\n' + (desc || 'none')
-      );
-      window.open('https://mail.google.com/mail/?view=cm&to=sales@richcortezandsons.com&su=' + subject + '&body=' + body, '_blank', 'noopener');
-      closeQuoteModal();
+      fetch('https://formspree.io/f/maqvnlpg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          email: email || 'not provided',
+          type: type.textContent.trim(),
+          service: service || 'not selected',
+          message: desc || 'none'
+        })
+      })
+      .then(function(r) {
+        if (r.ok) {
+          closeQuoteModal();
+          alert('Thank you! We\'ll be in touch with you shortly.');
+        } else {
+          alert('Something went wrong. Please call us at (925) 455-0720.');
+        }
+      })
+      .catch(function() {
+        alert('Something went wrong. Please call us at (925) 455-0720.');
+      });
     }
   </script>
 
