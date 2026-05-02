@@ -988,6 +988,7 @@
           <label for="q-desc">Description</label>
           <textarea id="q-desc" placeholder="Tell us what's going on — the more detail, the better!"></textarea>
         </div>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
         <button class="modal-submit" onclick="submitQuote()">
           <i class="fas fa-paper-plane"></i> Send My Request
         </button>
@@ -1042,9 +1043,26 @@
     function submitQuote() {
       var name = document.getElementById('q-name').value.trim();
       var phone = document.getElementById('q-phone').value.trim();
-      if (!name || !phone) { alert('Please provide your name and phone number.'); return; }
-      closeQuoteModal();
-      alert('Thank you, ' + name + '! We\'ll be in touch shortly.');
+      if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
+      if (document.querySelector('input[name="_gotcha"]').value) return;
+      var email = document.getElementById('q-email') ? document.getElementById('q-email').value.trim() : '';
+      var desc  = document.getElementById('q-desc')  ? document.getElementById('q-desc').value.trim()  : '';
+      fetch('https://formspree.io/f/maqvnlpg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name: name, phone: phone, email: email || 'not provided', message: desc || 'none' })
+      })
+      .then(function(r) {
+        if (r.ok) {
+          closeQuoteModal();
+          alert('Thank you! We\'ll be in touch with you shortly.');
+        } else {
+          alert('Something went wrong. Please call us at (925) 455-0720.');
+        }
+      })
+      .catch(function() {
+        alert('Something went wrong. Please call us at (925) 455-0720.');
+      });
     }
   </script>
 

@@ -1124,6 +1124,7 @@
           <label for="q-desc">Description</label>
           <textarea id="q-desc" placeholder="Tell us what's going on — the more detail, the better!"></textarea>
         </div>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
         <button class="modal-submit" onclick="submitQuote()">
           <i class="fas fa-paper-plane"></i> Send My Request
         </button>
@@ -1192,6 +1193,7 @@
       if (pill) service = pill.textContent;
       var desc  = document.getElementById('q-desc').value.trim();
       var email = document.getElementById('q-email').value.trim();
+      if (document.querySelector('input[name="_gotcha"]').value) return;
       fetch('https://formspree.io/f/maqvnlpg', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
