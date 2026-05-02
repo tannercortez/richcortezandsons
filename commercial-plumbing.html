@@ -1047,6 +1047,15 @@
       var desc  = document.getElementById('q-desc').value.trim();
       var email = document.getElementById('q-email').value.trim();
       if (document.querySelector('input[name="_gotcha"]').value) return;
+      var lastSubmit = localStorage.getItem('rc_last_submit');
+      if (lastSubmit && (Date.now() - parseInt(lastSubmit)) < 120000) {
+        var secs = Math.ceil((120000 - (Date.now() - parseInt(lastSubmit))) / 1000);
+        alert('Please wait ' + secs + ' more seconds before submitting again.');
+        return;
+      }
+      var btn = document.querySelector('.modal-submit');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Sending...';
       fetch('https://formspree.io/f/maqvnlpg', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -1060,7 +1069,10 @@
         })
       })
       .then(function(r) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send My Request';
         if (r.ok) {
+          localStorage.setItem('rc_last_submit', Date.now());
           closeQuoteModal();
           alert('Thank you! We\'ll be in touch with you shortly.');
         } else {
@@ -1068,6 +1080,8 @@
         }
       })
       .catch(function() {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send My Request';
         alert('Something went wrong. Please call us at (925) 455-0720.');
       });
     }
