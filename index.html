@@ -2956,7 +2956,7 @@
       if (service) {
         document.querySelectorAll('.service-pill').forEach(function(p) {
           if (p.textContent.trim() === service) {
-            p.classList.add('selected');
+            togglePill(p);
           }
         });
       }

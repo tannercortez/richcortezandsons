@@ -1317,7 +1317,7 @@
       if (type) selectType(type);
       if (service) {
         document.querySelectorAll('.service-pill').forEach(function(p) {
-          if (p.textContent.trim() === service) p.classList.add('selected');
+          if (p.textContent.trim() === service) togglePill(p);
         });
       }
     }
