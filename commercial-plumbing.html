@@ -1017,6 +1017,10 @@
             <span class="service-pill" onclick="toggleLocation(this)">Oakland</span>
           </div>
         </div>
+        <div class="modal-field service-location" id="brand-appliance">
+          <label for="q-appliance-brand">Appliance Brand</label>
+          <input type="text" id="q-appliance-brand" placeholder="e.g. Whirlpool, Samsung, GE…" autocomplete="off">
+        </div>
         <div class="modal-field service-location" id="loc-appliance">
           <label>Select Your City</label>
           <div class="service-pills location-pills">
@@ -1179,6 +1183,8 @@
       document.body.style.overflow = '';
       document.querySelectorAll('.service-pill.selected').forEach(function(p) { p.classList.remove('selected'); });
       document.querySelectorAll('.service-location').forEach(function(l) { l.classList.remove('visible'); });
+      var brandInput = document.getElementById('q-appliance-brand');
+      if (brandInput) brandInput.value = '';
     }
     document.getElementById('quoteModal').addEventListener('click', function(e) {
       if (e.target === this) closeQuoteModal();
@@ -1201,6 +1207,8 @@
       document.querySelectorAll('.service-location').forEach(function(l) { l.classList.remove('visible'); });
       var loc = el.getAttribute('data-loc');
       if (loc) {
+        var brandSection = document.getElementById('brand-' + loc);
+        if (brandSection) brandSection.classList.add('visible');
         var locSection = document.getElementById('loc-' + loc);
         if (locSection) locSection.classList.add('visible');
       }
@@ -1221,6 +1229,8 @@
       if (pill) service = pill.textContent;
       var locPill = document.querySelector('.location-pills .service-pill.selected');
       var city = locPill ? locPill.textContent.trim() : 'not selected';
+      var brandSection = document.getElementById('brand-appliance');
+      var applianceBrand = (brandSection && brandSection.classList.contains('visible')) ? document.getElementById('q-appliance-brand').value.trim() : '';
       var desc  = document.getElementById('q-desc').value.trim();
       var email = document.getElementById('q-email').value.trim();
       if (document.querySelector('input[name="_gotcha"]').value) return;
@@ -1242,6 +1252,7 @@
           email: email || 'not provided',
           type: type.textContent.trim(),
           service: service || 'not selected',
+          appliance_brand: applianceBrand || 'n/a',
           city: city,
           message: desc || 'none'
         })
