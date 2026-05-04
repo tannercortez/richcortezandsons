@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Rich Cortez & Sons Inc.</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0c1f3c;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    .wrap { max-width: 480px; }
+    h1 { font-size: 5rem; font-weight: 800; color: #cc2222; line-height: 1; }
+    h2 { font-size: 1.5rem; margin: 0.5rem 0 1rem; }
+    p { color: #8aadcc; margin-bottom: 2rem; line-height: 1.6; }
+    a.btn {
+      display: inline-block;
+      background: #cc2222;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    a.btn:hover { background: #a81c1c; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+    <p>Sorry, we couldn't find what you were looking for. You'll be redirected to the home page in a few seconds.</p>
+    <a href="/" class="btn">Go to Home Page</a>
+  </div>
+  <script>setTimeout(function(){ window.location.replace('/'); }, 4000);</script>
+</body>
+</html>
