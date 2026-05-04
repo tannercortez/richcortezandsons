@@ -692,6 +692,8 @@
     .type-btn.active { border-color: var(--orange); color: var(--orange); background: rgba(204,34,34,0.04); }
     .service-section { display: none; }
     .service-section.visible { display: flex; }
+    .service-location { display: none; }
+    .service-location.visible { display: flex; flex-direction: column; gap: 6px; }
     .service-pills { display: flex; flex-wrap: wrap; gap: 8px; }
     .service-pill {
       padding: 6px 14px;
@@ -1119,19 +1121,179 @@
         <div class="modal-field service-section" id="section-residential">
           <label>Service Needed</label>
           <div class="service-pills">
-            <span class="service-pill" onclick="togglePill(this)">HVAC</span>
-            <span class="service-pill" onclick="togglePill(this)">Plumbing</span>
-            <span class="service-pill" onclick="togglePill(this)">Appliance Repair</span>
-            <span class="service-pill" onclick="togglePill(this)">Solar Installation</span>
+            <span class="service-pill" data-loc="hvac" onclick="togglePill(this)">HVAC</span>
+            <span class="service-pill" data-loc="plumbing" onclick="togglePill(this)">Plumbing</span>
+            <span class="service-pill" data-loc="appliance" onclick="togglePill(this)">Appliance Repair</span>
+            <span class="service-pill" data-loc="solar" onclick="togglePill(this)">Solar Installation</span>
             <span class="service-pill" onclick="togglePill(this)">Other</span>
+          </div>
+        </div>
+        <div class="modal-field service-location" id="loc-hvac">
+          <label>Select Your City</label>
+          <div class="service-pills location-pills">
+            <span class="service-pill" onclick="toggleLocation(this)">Manteca</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Tracy</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Mountain House</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Lathrop</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Livermore</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Pleasanton</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Dublin</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Ramon</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Danville</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Alamo</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Walnut Creek</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Concord</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Brentwood</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Antioch</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Pittsburg</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Oakley</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Hayward</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Castro Valley</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Leandro</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Oakland</span>
+          </div>
+        </div>
+        <div class="modal-field service-location" id="loc-plumbing">
+          <label>Select Your City</label>
+          <div class="service-pills location-pills">
+            <span class="service-pill" onclick="toggleLocation(this)">Manteca</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Tracy</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Mountain House</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Lathrop</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Livermore</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Pleasanton</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Dublin</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Ramon</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Danville</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Alamo</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Walnut Creek</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Concord</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Brentwood</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Antioch</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Pittsburg</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Oakley</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Hayward</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Castro Valley</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Leandro</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Oakland</span>
+          </div>
+        </div>
+        <div class="modal-field service-location" id="loc-appliance">
+          <label>Select Your City</label>
+          <div class="service-pills location-pills">
+            <span class="service-pill" onclick="toggleLocation(this)">Livermore</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Pleasanton</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Dublin</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Ramon</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Danville</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Tracy</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Lathrop</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Manteca</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Mountain House</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Ripon</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Salida</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Alamo</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Sunol</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Diablo</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Springtown</span>
+          </div>
+        </div>
+        <div class="modal-field service-location" id="loc-solar">
+          <label>Select Your City</label>
+          <div class="service-pills location-pills">
+            <span class="service-pill" onclick="toggleLocation(this)">Manteca</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Tracy</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Mountain House</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Lathrop</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Livermore</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Pleasanton</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Dublin</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Ramon</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Danville</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Walnut Creek</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Concord</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Hayward</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Leandro</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Oakland</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Fremont</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Milpitas</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Santa Clara</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Sunnyvale</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Jose</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Redwood City</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Palo Alto</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Mateo</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Bruno</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Daly City</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Francisco</span>
           </div>
         </div>
         <div class="modal-field service-section" id="section-commercial">
           <label>Service Needed</label>
           <div class="service-pills">
-            <span class="service-pill" onclick="togglePill(this)">Commercial HVAC</span>
-            <span class="service-pill" onclick="togglePill(this)">Commercial Plumbing</span>
+            <span class="service-pill" data-loc="commercial-hvac" onclick="togglePill(this)">Commercial HVAC</span>
+            <span class="service-pill" data-loc="commercial-plumbing" onclick="togglePill(this)">Commercial Plumbing</span>
             <span class="service-pill" onclick="togglePill(this)">Other</span>
+          </div>
+        </div>
+        <div class="modal-field service-location" id="loc-commercial-hvac">
+          <label>Select Your City</label>
+          <div class="service-pills location-pills">
+            <span class="service-pill" onclick="toggleLocation(this)">Manteca</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Tracy</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Mountain House</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Lathrop</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Livermore</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Pleasanton</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Dublin</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Ramon</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Danville</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Walnut Creek</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Concord</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Hayward</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Leandro</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Oakland</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Fremont</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Milpitas</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Santa Clara</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Sunnyvale</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Jose</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Redwood City</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Palo Alto</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Mateo</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Bruno</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Daly City</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Francisco</span>
+          </div>
+        </div>
+        <div class="modal-field service-location" id="loc-commercial-plumbing">
+          <label>Select Your City</label>
+          <div class="service-pills location-pills">
+            <span class="service-pill" onclick="toggleLocation(this)">Manteca</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Tracy</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Mountain House</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Lathrop</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Livermore</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Pleasanton</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Dublin</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Ramon</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Danville</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Walnut Creek</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Concord</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Hayward</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Leandro</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Oakland</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Fremont</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Milpitas</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Santa Clara</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Sunnyvale</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Jose</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Redwood City</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Palo Alto</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Mateo</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Bruno</span>
+            <span class="service-pill" onclick="toggleLocation(this)">Daly City</span>
+            <span class="service-pill" onclick="toggleLocation(this)">San Francisco</span>
           </div>
         </div>
         <div class="modal-field">
@@ -1177,6 +1339,7 @@
       document.getElementById('quoteModal').classList.remove('open');
       document.body.style.overflow = '';
       document.querySelectorAll('.service-pill.selected').forEach(function(p) { p.classList.remove('selected'); });
+      document.querySelectorAll('.service-location').forEach(function(l) { l.classList.remove('visible'); });
     }
     document.getElementById('quoteModal').addEventListener('click', function(e) {
       if (e.target === this) closeQuoteModal();
@@ -1190,8 +1353,20 @@
       document.getElementById('section-residential').classList.toggle('visible', type === 'residential');
       document.getElementById('section-commercial').classList.toggle('visible', type === 'commercial');
       document.querySelectorAll('.service-pill.selected').forEach(function(p) { p.classList.remove('selected'); });
+      document.querySelectorAll('.service-location').forEach(function(l) { l.classList.remove('visible'); });
     }
     function togglePill(el) {
+      var group = el.closest('.service-pills');
+      group.querySelectorAll('.service-pill').forEach(function(p) { p.classList.remove('selected'); });
+      el.classList.add('selected');
+      document.querySelectorAll('.service-location').forEach(function(l) { l.classList.remove('visible'); });
+      var loc = el.getAttribute('data-loc');
+      if (loc) {
+        var locSection = document.getElementById('loc-' + loc);
+        if (locSection) locSection.classList.add('visible');
+      }
+    }
+    function toggleLocation(el) {
       var group = el.closest('.service-pills');
       group.querySelectorAll('.service-pill').forEach(function(p) { p.classList.remove('selected'); });
       el.classList.add('selected');
@@ -1203,8 +1378,10 @@
       var type = document.querySelector('.type-btn.active');
       if (!type) { alert('Please select Residential or Commercial.'); return; }
       var service = '';
-      var pill = document.querySelector('.service-pill.selected');
+      var pill = document.querySelector('#section-residential .service-pill.selected, #section-commercial .service-pill.selected');
       if (pill) service = pill.textContent;
+      var locPill = document.querySelector('.location-pills .service-pill.selected');
+      var city = locPill ? locPill.textContent.trim() : 'not selected';
       var desc  = document.getElementById('q-desc').value.trim();
       var email = document.getElementById('q-email').value.trim();
       if (document.querySelector('input[name="_gotcha"]').value) return;
@@ -1226,6 +1403,7 @@
           email: email || 'not provided',
           type: type.textContent.trim(),
           service: service || 'not selected',
+          city: city,
           message: desc || 'none'
         })
       })
