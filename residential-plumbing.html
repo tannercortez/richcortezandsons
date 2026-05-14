@@ -631,7 +631,9 @@
       max-width: 520px;
       width: 100%;
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      overflow: hidden;
+      max-height: calc(100vh - 100px);
+      display: flex;
+      flex-direction: column;
     }
     .modal-header {
       background: var(--navy);
@@ -641,6 +643,7 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 16px;
+      flex-shrink: 0;
     }
     .modal-header h3 { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
     .modal-header p { font-size: 13px; color: rgba(255,255,255,0.65); }
@@ -656,7 +659,7 @@
       flex-shrink: 0;
     }
     .modal-close:hover { opacity: 1; }
-    .modal-body { padding: 28px; display: flex; flex-direction: column; gap: 18px; }
+    .modal-body { padding: 28px; display: flex; flex-direction: column; gap: 18px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; min-height: 0; }
     .modal-field { display: flex; flex-direction: column; gap: 6px; }
     .modal-field label { font-size: 13px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.5px; }
     .modal-field input, .modal-field textarea {
@@ -743,6 +746,8 @@
       .page-hero { padding: 50px 0 40px; }
       .service-content { padding: 40px 0; }
       .emergency-block { flex-direction: column; }
+      .modal-overlay { padding: 80px 16px; }
+      .modal-box { max-height: calc(100vh - 160px); }
     }
   </style>
 </head>
@@ -1125,7 +1130,7 @@
             <span class="service-pill" data-loc="plumbing" onclick="togglePill(this)">Plumbing</span>
             <span class="service-pill" data-loc="appliance" onclick="togglePill(this)">Appliance Repair</span>
             <span class="service-pill" data-loc="solar" onclick="togglePill(this)">Solar Installation</span>
-            <span class="service-pill" onclick="togglePill(this)">Other</span>
+            <span class="service-pill" data-loc="other" onclick="togglePill(this)">Other</span>
           </div>
         </div>
         <div class="modal-field service-location" id="loc-hvac">
@@ -1237,7 +1242,7 @@
           <div class="service-pills">
             <span class="service-pill" data-loc="commercial-hvac" onclick="togglePill(this)">Commercial HVAC</span>
             <span class="service-pill" data-loc="commercial-plumbing" onclick="togglePill(this)">Commercial Plumbing</span>
-            <span class="service-pill" onclick="togglePill(this)">Other</span>
+            <span class="service-pill" data-loc="other" onclick="togglePill(this)">Other</span>
           </div>
         </div>
         <div class="modal-field service-location" id="loc-commercial-hvac">
@@ -1300,6 +1305,11 @@
             <span class="service-pill" onclick="toggleLocation(this)">San Francisco</span>
           </div>
         </div>
+        <div class="modal-field service-location" id="loc-other">
+          <label for="q-other-location">Location</label>
+          <input type="text" id="q-other-location" placeholder="Enter your city or area" autocomplete="off" />
+        </div>
+
         <div class="modal-field">
           <label for="q-desc">Description</label>
           <textarea id="q-desc" placeholder="Tell us what's going on — the more detail, the better!"></textarea>
@@ -1346,6 +1356,8 @@
       document.querySelectorAll('.service-location').forEach(function(l) { l.classList.remove('visible'); });
       var brandInput = document.getElementById('q-appliance-brand');
       if (brandInput) brandInput.value = '';
+      var otherLocInput = document.getElementById('q-other-location');
+      if (otherLocInput) otherLocInput.value = '';
     }
     document.getElementById('quoteModal').addEventListener('click', function(e) {
       if (e.target === this) closeQuoteModal();
@@ -1390,6 +1402,11 @@
       if (pill) service = pill.textContent;
       var locPill = document.querySelector('.location-pills .service-pill.selected');
       var city = locPill ? locPill.textContent.trim() : 'not selected';
+      var otherLocSection = document.getElementById('loc-other');
+      if (otherLocSection && otherLocSection.classList.contains('visible')) {
+        var otherLocVal = document.getElementById('q-other-location').value.trim();
+        city = otherLocVal || 'not provided';
+      }
       var brandSection = document.getElementById('brand-appliance');
       var applianceBrand = (brandSection && brandSection.classList.contains('visible')) ? document.getElementById('q-appliance-brand').value.trim() : '';
       var desc  = document.getElementById('q-desc').value.trim();

@@ -339,7 +339,7 @@
       position: relative;
       overflow: hidden;
       background: var(--navy);
-      height: 75vh;
+      height: 85vh;
     }
     .hero-bg-img {
       width: 100%;
@@ -361,8 +361,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: 30px;
-      padding-bottom: 40px;
+      padding-top: 16px;
+      padding-bottom: 16px;
       position: relative;
       z-index: 1;
     }
@@ -383,21 +383,23 @@
       margin-bottom: 20px;
     }
     .hero h1 {
-      font-size: clamp(36px, 5vw, 58px);
+      font-size: clamp(22px, 3vw, 34px);
       font-weight: 900;
       color: #fff;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-bottom: 20px;
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
       text-transform: uppercase;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.6);
+      paint-order: stroke fill;
     }
     .hero h1 span { color: var(--orange); }
     .hero-sub {
       color: #fff;
       font-size: 16px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 28px;
+      font-weight: 600;
+      letter-spacing: 0px;
+      margin-bottom: 16px;
       max-width: 460px;
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     }
@@ -562,7 +564,8 @@
       text-align: center;
     }
     .hero-content--centered .hero-sub {
-      max-width: 100%;
+      max-width: 660px;
+      margin: 0 auto;
       font-size: 15px;
     }
     .hero-content--centered .hero-phone {
@@ -1215,6 +1218,7 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
+      html, body { overflow-x: hidden; max-width: 100%; }
       .topbar .container { justify-content: center; }
       .topbar-right { display: none; }
       .topbar .container > div:first-child { justify-content: space-between; width: 100%; }
@@ -1277,7 +1281,7 @@
     }
     @media (max-width: 480px) {
       .service-strip .container { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 32px; }
+      .hero h1 { font-size: 20px; }
       .cta-banner .container { flex-direction: column; text-align: center; }
       .cta-actions { justify-content: center; }
       /* Extra tightening for small phones */
@@ -1700,8 +1704,9 @@
       border-radius: 14px;
       width: 100%;
       max-width: 520px;
-      max-height: 90vh;
-      overflow-y: auto;
+      max-height: calc(100vh - 100px);
+      display: flex;
+      flex-direction: column;
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       animation: modalIn 0.25s ease;
     }
@@ -1718,6 +1723,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
     .modal-header h3 { font-size: 20px; font-weight: 700; margin: 0; }
     .modal-header p  { font-size: 13px; color: #aac; margin: 4px 0 0; }
@@ -1734,7 +1740,7 @@
     }
     .modal-close:hover { opacity: 1; }
 
-    .modal-body { padding: 28px; }
+    .modal-body { padding: 28px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; min-height: 0; }
 
     .modal-field { margin-bottom: 18px; }
     .modal-field label {
@@ -1835,7 +1841,9 @@
     .service-location { display: none; }
     .service-location.visible { display: flex; flex-direction: column; gap: 6px; }
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
+      .modal-overlay { padding: 80px 16px; }
+      .modal-box { max-height: calc(100vh - 160px); }
       .modal-body { padding: 20px; }
       .modal-header { padding: 18px 20px 14px; }
     }
@@ -1919,7 +1927,7 @@
       <div class="hero-content hero-content--centered">
         <h1>Bay Area <span>HVAC, Plumbing &amp; Appliance</span> Experts</h1>
         <p class="hero-sub">
-          First-class residential &amp; commercial HVAC / Appliance / Plumbing installation, repair and service.<br>Friendly, approachable, and serving the Bay Area for over 46 years.
+          Trusted residential &amp; commercial service — installation, repair, and maintenance done right. Friendly, dependable, and proudly serving the Bay Area for over 46 years.
         </p>
         <div class="hero-phone">
           <div class="hero-phone-icon"><i class="fas fa-phone-alt"></i></div>
@@ -1930,7 +1938,7 @@
         </div>
         <div class="hero-ctas">
           <button onclick="openQuoteModal()" class="btn btn-orange"><i class="fas fa-calendar-check"></i> Schedule Service</button>
-          <a href="#what-we-do" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);"><i class="fas fa-list"></i> Our Services</a>
+          <a href="#what-we-do" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);"><i class="fas fa-list"></i> Our Services</a>
         </div>
       </div>
     </div>
@@ -2745,7 +2753,7 @@
             <span class="service-pill" data-loc="plumbing" onclick="togglePill(this)">Plumbing</span>
             <span class="service-pill" data-loc="appliance" onclick="togglePill(this)">Appliance Repair</span>
             <span class="service-pill" data-loc="solar" onclick="togglePill(this)">Solar Installation</span>
-            <span class="service-pill" onclick="togglePill(this)">Other</span>
+            <span class="service-pill" data-loc="other" onclick="togglePill(this)">Other</span>
           </div>
         </div>
         <div class="modal-field service-location" id="loc-hvac">
@@ -2859,7 +2867,7 @@
           <div class="service-pills">
             <span class="service-pill" data-loc="commercial-hvac" onclick="togglePill(this)">Commercial HVAC</span>
             <span class="service-pill" data-loc="commercial-plumbing" onclick="togglePill(this)">Commercial Plumbing</span>
-            <span class="service-pill" onclick="togglePill(this)">Other</span>
+            <span class="service-pill" data-loc="other" onclick="togglePill(this)">Other</span>
           </div>
         </div>
         <div class="modal-field service-location" id="loc-commercial-hvac">
@@ -2923,6 +2931,11 @@
           </div>
         </div>
 
+        <div class="modal-field service-location" id="loc-other">
+          <label for="q-other-location">Location</label>
+          <input type="text" id="q-other-location" placeholder="Enter your city or area" autocomplete="off" />
+        </div>
+
         <div class="modal-field">
           <label for="q-desc">Description</label>
           <textarea id="q-desc" placeholder="Tell us what's going on — the more detail, the better!"></textarea>
@@ -2973,6 +2986,8 @@
       document.querySelectorAll('.service-location').forEach(function(l) { l.classList.remove('visible'); });
       var brandInput = document.getElementById('q-appliance-brand');
       if (brandInput) brandInput.value = '';
+      var otherLocInput = document.getElementById('q-other-location');
+      if (otherLocInput) otherLocInput.value = '';
     }
     // Close on backdrop click
     document.getElementById('quoteModal').addEventListener('click', function(e) {
@@ -3029,6 +3044,11 @@
       if (pill) service = pill.textContent;
       var locPill = document.querySelector('.location-pills .service-pill.selected');
       var city = locPill ? locPill.textContent.trim() : 'not selected';
+      var otherLocSection = document.getElementById('loc-other');
+      if (otherLocSection && otherLocSection.classList.contains('visible')) {
+        var otherLocVal = document.getElementById('q-other-location').value.trim();
+        city = otherLocVal || 'not provided';
+      }
       var brandSection = document.getElementById('brand-appliance');
       var applianceBrand = (brandSection && brandSection.classList.contains('visible')) ? document.getElementById('q-appliance-brand').value.trim() : '';
       var desc  = document.getElementById('q-desc').value.trim();
